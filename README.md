@@ -1,2 +1,3 @@
 # execmd
-Collection of projects supporting in browser markdown execution
+
+Collection of projects supporting in-browser markdown execution.
