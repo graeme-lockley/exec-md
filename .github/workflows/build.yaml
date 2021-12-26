@@ -20,6 +20,7 @@ jobs:
 
       - name: Install rush
         run: node common/scripts/install-run-rush.js install
+      - run: find / -print
       - run: rush install --no-link
       - run: rush link
       - run: rush build --verbose
