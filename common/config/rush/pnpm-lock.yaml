@@ -6,6 +6,7 @@ specifiers:
   '@observablehq/inspector': ^3.2.4
   '@observablehq/parser': ^5.0.0
   '@observablehq/runtime': ^4.18.3
+  '@observablehq/stdlib': ^3.15.3
   '@rollup/plugin-commonjs': ^21.0.1
   '@rollup/plugin-node-resolve': ^13.1.1
   '@rollup/plugin-typescript': ^8.0.0
@@ -40,6 +41,7 @@ dependencies:
   '@observablehq/inspector': 3.2.4
   '@observablehq/parser': 5.0.0
   '@observablehq/runtime': 4.18.3
+  '@observablehq/stdlib': 3.15.3
   '@rollup/plugin-commonjs': 21.0.1_rollup@2.62.0
   '@rollup/plugin-node-resolve': 13.1.1_rollup@2.62.0
   '@rollup/plugin-typescript': 8.3.0_7c5ff569c0887b4f0035eb7cb6988163
