@@ -32,6 +32,10 @@ function serve() {
 
 export default {
 	input: 'src/main.ts',
+	onwarn: (warning, next) => {
+		if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+		next(warning);
+	},
 	output: {
 		sourcemap: true,
 		format: 'iife',
