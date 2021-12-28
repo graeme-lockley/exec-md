@@ -4,6 +4,7 @@ import { valueUpdater, inspectorUpdater, renderCode } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 import type { Inspector } from "@observablehq/inspector";
 import { importContent } from "../Import";
+import { Eval } from "../Eval"
 
 interface JavascriptX extends Plugin {
     hljs: any | undefined;
@@ -73,7 +74,7 @@ export const javascriptX: JavascriptX = {
 
                 const aliases = pr.names.map(({ name, alias }) => alias);
 
-                module.variable(variableObserver).define(undefined, aliases, eval(`(${aliases.join(", ")}) => ({${aliases.join(", ")}})`));
+                module.variable(variableObserver).define(undefined, aliases, Eval(`(${aliases.join(", ")}) => ({${aliases.join(", ")}})`));
 
                 return `<div id='${id}' class='nbv-js-x'><div id='${observerID}'></div><div id='${codeID}'></div></div>`;
             } else

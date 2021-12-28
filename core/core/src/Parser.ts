@@ -1,4 +1,5 @@
 import { parseCell } from "@observablehq/parser";
+import { Eval } from "./Eval"
 
 export interface ImportStatement {
     type: "import";
@@ -37,8 +38,7 @@ export const parse = (code: string): ParseResult => {
 
             const fullBody = `(${dependencies.join(", ")}) => ${body}`;
 
-            // eslint-disable-next-line
-            const result = eval(fullBody);
+            const result = Eval(fullBody);
 
             return { type: "assignment", name, dependencies, body, fullBody, result };
         }

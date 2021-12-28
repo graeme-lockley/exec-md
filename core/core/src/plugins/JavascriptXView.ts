@@ -2,6 +2,7 @@ import { parse } from "../Parser";
 import type { Observer } from "../Observer";
 import { renderCode, valueUpdater } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
+import { Eval } from "../Eval"
 
 interface JavascriptXView extends Plugin {
     hljs: any | undefined;
@@ -49,7 +50,7 @@ export const javascriptXView: JavascriptXView = {
 
                     module
                         .variable()
-                        .define(pr.name, [viewCellName], eval(`(${viewCellName}) => Generators.input(${viewCellName})`));
+                        .define(pr.name, [viewCellName], Eval(`(${viewCellName}) => Generators.input(${viewCellName})`));
                 }
 
                 return `<div id='${viewCellID}' class='nbv-js-x-view'><div id='${viewID}'></div><div id='${codeID}'></div></div>`;
@@ -58,7 +59,7 @@ export const javascriptXView: JavascriptXView = {
             else {
                 module
                     .variable()
-                    .define(pr.name, [], eval(`() => undefined`));
+                    .define(pr.name, [], Eval(`() => undefined`));
 
                 return '';
             }

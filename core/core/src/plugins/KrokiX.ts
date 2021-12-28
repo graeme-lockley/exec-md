@@ -2,6 +2,7 @@ import type { Observer } from "../Observer";
 import { renderCode, valueUpdater } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 import { parseCell } from "@observablehq/parser";
+import { Eval } from "../Eval"
 
 interface KrokiX extends Plugin {
     hljs: any | undefined;
@@ -63,7 +64,7 @@ export const krokiX: KrokiX = {
 
                 module
                     .variable(variableObserver)
-                    .define(undefined, f.names, eval(f.body));
+                    .define(undefined, f.names, Eval(f.body));
 
 
                 return `<div id='${id}' class='nbv-kroki-x'><div id='${observerID}'></div><div id='${codeID}'>${pin ? renderer(body) : ''}</div></div>`;
