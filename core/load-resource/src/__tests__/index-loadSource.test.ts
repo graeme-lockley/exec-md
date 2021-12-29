@@ -1,18 +1,22 @@
 import { load, loadSource } from '../index'
 
+const ARB_TEXT = 'Hello World'
+const ARB_URL = 'arb-url'
+const INVALID_URL_RESPONSE = 'Invalid URL'
+
 describe('loadSource', () => {
   test('valid URL', async () => {
     globalThis.fetch = validFetch
 
-    const csv = await loadAsText('arb-url')
+    const csv = await loadAsText(ARB_URL)
 
-    expect(csv).toEqual('Hello world')
+    expect(csv).toEqual(ARB_TEXT)
   })
 
   test('invalid URL', async () => {
     globalThis.fetch = invalidFetch
 
-    await expect(() => loadAsText('arb-url')).rejects.toThrow('Invalid URL')
+    await expect(() => loadAsText(ARB_URL)).rejects.toThrow(INVALID_URL_RESPONSE)
   })
 })
 
@@ -20,26 +24,26 @@ describe('load', () => {
   test('valid URL', async () => {
     globalThis.fetch = validFetch
 
-    const text = await load('arb-url')
-    expect(text).toEqual('Hello world')
+    const text = await load(ARB_URL)
+    expect(text).toEqual(ARB_TEXT)
   })
 
   test('invalid URL', async () => {
     globalThis.fetch = invalidFetch
 
-    await expect(() => load('arb-url')).rejects.toThrow('Invalid URL')
+    await expect(() => load(ARB_URL)).rejects.toThrow(INVALID_URL_RESPONSE)
   })
 })
 
 const validFetch = (url: string): Promise<any> => {
   return Promise.resolve({
     ok: true,
-    text: () => Promise.resolve('Hello world')
+    text: () => Promise.resolve(ARB_TEXT)
   })
 }
 
 const invalidFetch = (url: string): Promise<any> => {
-  return Promise.reject(new Error('Invalid URL'))
+  return Promise.reject(new Error(INVALID_URL_RESPONSE))
 }
 
 const loadAsText = async (url: string): Promise<any> => {
