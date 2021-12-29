@@ -4,8 +4,8 @@
     import plaintext_highlighter from "highlight.js/lib/languages/plaintext";
     import "highlight.js/styles/base16/papercolor-light.css";
     import { Library, Runtime } from "@observablehq/runtime";
-    import { loadSource } from "./Import";
     import { markedParser } from "./MarkedTemplateParser";
+    import { loadSource } from "load-resource" 
 
     hljs.registerLanguage("javascript", javascript_highlighter);
     hljs.registerLanguage("js", javascript_highlighter);

@@ -431,6 +431,10 @@
     {
       "packageName": "core",
       "projectFolder": "core/core"
+    },
+    {
+      "packageName": "load-resource",
+      "projectFolder": "core/load-resource"
     }
   ]
 }

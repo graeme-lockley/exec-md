@@ -1,0 +1,20 @@
+{
+    "name": "load-resource",
+    "version": "1.0.0",
+    "description": "Loads resources using Observable's AbstractFile",
+    "main": "dist/index.js",
+    "types": "dist/index.d.js",
+    "files": [
+        "/dist"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "devDependencies": {
+      "typescript": "~4.5.4"
+    },
+    "dependencies": {
+      "@observablehq/stdlib": "~3.15.3"
+    }
+}

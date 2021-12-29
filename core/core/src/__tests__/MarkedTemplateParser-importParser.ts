@@ -1,5 +1,6 @@
 import { Runtime } from "@observablehq/runtime";
-import { importContent } from "../Import";
+import { importParser } from "../MarkedTemplateParser";
+
 import fetch from "cross-fetch";
 
 if (globalThis.fetch === undefined) {
@@ -11,7 +12,7 @@ test("Empty content results in an empty module", () => {
 
     const runtime = new Runtime();
     const module = runtime.module();
-    importContent(content, module);
+    importParser(content, module);
 
     expect(module._scope.size).toEqual(0);
 });
@@ -24,7 +25,7 @@ Some text
 
     const runtime = new Runtime();
     const module = runtime.module();
-    importContent(content, module);
+    importParser(content, module);
 
     expect(module._scope.size).toEqual(0);
 });
@@ -44,7 +45,7 @@ x = 10
 
     const runtime = new Runtime();
     const module = runtime.module();
-    importContent(content, module);
+    importParser(content, module);
 
     expect(module._scope.size).toEqual(0);
 });
@@ -65,7 +66,7 @@ y = 10
 
     const runtime = new Runtime();
     const module = runtime.module();
-    importContent(content, module);
+    importParser(content, module);
 
     expect(module._scope.size).toEqual(2);
 
@@ -90,7 +91,7 @@ y = 10
     const importedModule = runtime.module();
     const module = runtime.module();
 
-    importContent(importedContent, importedModule);
+    importParser(importedContent, importedModule);
 
     module.variable().import("x", importedModule);
     module.variable().define("z", ["x"], (x: number) => x * 2);
@@ -114,9 +115,9 @@ import { y as value, createList } from "https://graeme-lockley.github.io/noteboo
 
     const module = runtime.module();
 
-    importContent(content, module);
+    importParser(content, module);
 
-    await delay(1000);
+    await delay(3000);
 
     expect(module._scope.size).toEqual(2);
 

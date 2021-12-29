@@ -3,7 +3,8 @@ import type { Observer } from "../Observer";
 import { valueUpdater, inspectorUpdater, renderCode } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 import type { Inspector } from "@observablehq/inspector";
-import { importContent } from "../Import";
+import { importParser } from "../MarkedTemplateParser";
+
 import { Eval } from "../Eval"
 
 interface JavascriptX extends Plugin {
@@ -56,7 +57,7 @@ export const javascriptX: JavascriptX = {
         else {
             fetch(pr.urn).then((r) => r.text()).then((t) => {
                 const newModule = module._runtime.module();
-                importContent(t, newModule);
+                importParser(t, newModule);
 
                 pr.names.forEach(({ name, alias }) => module.variable().import(name, alias, newModule));
             }).catch(e => console.log(e));
@@ -65,8 +66,8 @@ export const javascriptX: JavascriptX = {
                 const id = `js-x-${javascriptX_count++}`;
                 const observerID = id + '-observer';
                 const codeID = id + '-code';
-    
-                    const renderer: Renderer =
+
+                const renderer: Renderer =
                     () => renderCode(this.hljs, 'javascript', body);
 
                 const variableObserver =
