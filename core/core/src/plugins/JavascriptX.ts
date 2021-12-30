@@ -2,8 +2,8 @@ import type { IModule } from "../runtime";
 
 import { parse, type ParseResult } from "../Parser";
 import type { Observer } from "../runtime";
-import { valueUpdater, inspectorUpdater, renderCode } from "./Helpers";
-import type { Bindings, Options, Plugin } from "./Plugin";
+import { valueUpdater, inspectorUpdater, renderCode } from "../plugins-helper/Helpers";
+import type { Bindings, Options, Plugin } from "../plugins-helper/Plugin";
 import type { Inspector } from "@observablehq/inspector";
 import { importParser } from "../MarkedTemplateParser";
 

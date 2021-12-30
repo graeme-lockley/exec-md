@@ -1,8 +1,8 @@
 import type { IModule } from "../runtime";
 
 import type { Observer } from "../runtime";
-import { renderCode, valueUpdater } from "./Helpers";
-import type { Bindings, Options, Plugin } from "./Plugin";
+import { renderCode, valueUpdater } from "../plugins-helper/Helpers";
+import type { Bindings, Options, Plugin } from "../plugins-helper/Plugin";
 import { parseCell } from "@observablehq/parser";
 import { Eval } from "../Eval"
 

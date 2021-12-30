@@ -2,8 +2,8 @@ import type { IModule } from "../runtime";
 
 import { parse } from "../Parser";
 import type { Observer } from "../runtime";
-import { renderCode, valueUpdater } from "./Helpers";
-import type { Bindings, Options, Plugin } from "./Plugin";
+import { renderCode, valueUpdater } from "../plugins-helper/Helpers";
+import type { Bindings, Options, Plugin } from "../plugins-helper/Plugin";
 import { Eval } from "../Eval"
 
 interface JavascriptXView extends Plugin {
