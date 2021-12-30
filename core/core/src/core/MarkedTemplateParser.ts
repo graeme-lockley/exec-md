@@ -26,10 +26,9 @@ const renderer = {
     code(code: string, infostring: string, escaped: boolean | undefined) {
         const findResponse = find(plugins, infostring);
 
-        if (findResponse === undefined) {
-            console.log("Unknown infostring:", infostring);
-            return renderCode(hljs, "plaintext", code);
-        } else {
+        if (findResponse === undefined)
+            return renderCode(hljs, infostring, code);
+        else {
             const [plugin, is] = findResponse;
 
             return plugin.render(this.options.nbv_module, code, is, this.options.nbv_render);
