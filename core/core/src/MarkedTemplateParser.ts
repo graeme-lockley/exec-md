@@ -3,6 +3,7 @@ import { marked } from "marked";
 import { renderCode } from "./plugins/Helpers";
 import type { Options, Plugin, Plugins } from "./plugins/Plugin";
 import hljs from "highlight.js/lib/core";
+import type { IModule } from "./runtime";
 
 import { javascript } from "./plugins/Javascript";
 import { javascriptX } from "./plugins/JavascriptX";
@@ -84,10 +85,10 @@ const inlineExpression = {
 marked.use({ renderer, extensions: [inlineExpression] });
 
 
-export const markedParser = (text: string, module): string =>
+export const markedParser = (text: string, module: IModule): string =>
     marked.parse(text, { nbv_module: module, nbv_render: true });
 
-export const importParser = (text: string, module) =>
+export const importParser = (text: string, module: IModule) =>
     marked.parse(text, { nbv_module: module, nbv_render: false });
 
 function find(

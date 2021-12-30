@@ -1,5 +1,7 @@
+import type { IModule } from "../runtime";
+
 import { parse } from "../Parser";
-import type { Observer } from "../Observer";
+import type { Observer } from "../runtime";
 import { valueUpdater } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 
@@ -19,7 +21,7 @@ export const javascriptXInline: JavascriptXInline = {
         this.hljs = bindings.get('hljs');
     },
 
-    render: function (module, body: string, options: Options, render: boolean): string | Node {
+    render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         if (render) {
             if (body === null || body === undefined || body === '')
                 return `<span class='nbv-js-x-inline'></span>`;

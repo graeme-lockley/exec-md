@@ -3,28 +3,23 @@
     import javascript_highlighter from "highlight.js/lib/languages/javascript";
     import plaintext_highlighter from "highlight.js/lib/languages/plaintext";
     import "highlight.js/styles/base16/papercolor-light.css";
-    import { Library, Runtime } from "@observablehq/runtime";
     import { markedParser } from "./MarkedTemplateParser";
-    import { loadSource } from "load-resource" 
+    import { createRuntime } from "./runtime";
+    import type { IModule, IRuntime } from "./runtime";
 
     hljs.registerLanguage("javascript", javascript_highlighter);
     hljs.registerLanguage("js", javascript_highlighter);
     hljs.registerLanguage("plaintext", plaintext_highlighter);
 
-    const library = Object.assign(new Library(), {
-        load: () => (url: string) => loadSource(url),
-    });
-
-    let runtime = undefined;
-    let module = undefined;
+    let runtime: IRuntime | undefined = undefined;
+    let module: IModule = undefined;
 
     export let sourceURL: string;
 
     function sourceURLChange(newValue: string) {
-        if (runtime !== undefined) {
-            runtime.dispose();
-        }
-        runtime = new Runtime(library);
+        if (runtime !== undefined) runtime.dispose();
+
+        runtime = createRuntime();
         module = runtime.module();
     }
 

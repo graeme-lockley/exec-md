@@ -1,3 +1,5 @@
+import type { IModule } from "../runtime";
+
 import { renderCode } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 
@@ -17,7 +19,7 @@ export const javascript: Javascript = {
         this.hljs = bindings.get('hljs');
     },
 
-    render: function (module, body: string, options: Options, render: boolean): string | Node {       
+    render: function (module : IModule, body: string, options: Options, render: boolean): string | Node {       
         return render ? renderCode(this.hljs, 'javascript', body) : '';
     }
 };

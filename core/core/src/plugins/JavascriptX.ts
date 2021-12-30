@@ -1,5 +1,7 @@
+import type { IModule } from "../runtime";
+
 import { parse, type ParseResult } from "../Parser";
-import type { Observer } from "../Observer";
+import type { Observer } from "../runtime";
 import { valueUpdater, inspectorUpdater, renderCode } from "./Helpers";
 import type { Bindings, Options, Plugin } from "./Plugin";
 import type { Inspector } from "@observablehq/inspector";
@@ -25,7 +27,7 @@ export const javascriptX: JavascriptX = {
         this.hljs = bindings.get('hljs');
     },
 
-    render: function (module, body: string, options: Options, render: boolean): string | Node {
+    render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         const pr: ParseResult = parse(body);
 
         if (pr.type === "assignment") {
