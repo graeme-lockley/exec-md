@@ -1,9 +1,8 @@
-import type { IModule, Observer } from "../runtime";
+import { type IModule, type Observer, defineVariable } from "../runtime";
 
 import { renderCode, valueUpdater } from "../plugins-helper";
 import type { Bindings, Options, Plugin } from "../plugins-helper";
 import { parseCell } from "@observablehq/parser";
-import { Eval } from "../Eval"
 
 interface KrokiX extends Plugin {
     hljs: any | undefined;
@@ -63,10 +62,7 @@ export const krokiX: KrokiX = {
 
                 const f = functionFromBody(body);
 
-                module
-                    .variable(variableObserver)
-                    .define(undefined, f.names, Eval(f.body));
-
+                defineVariable(module, variableObserver, undefined, f.names, f.body);
 
                 return `<div id='${id}' class='nbv-kroki-x'><div id='${observerID}'></div><div id='${codeID}'>${pin ? renderer(body) : ''}</div></div>`;
             } else {
@@ -159,7 +155,7 @@ export const functionFromBody = (body: string): { names: Array<string>, body: st
 
     const uniqueNames = uniqueElementsInStringArray(names);
 
-    return { names: uniqueNames, body: `(${uniqueNames.join(", ")}) => \`${result.join('')}\`` };
+    return { names: uniqueNames, body: `\`${result.join('')}\`` };
 }
 
 const uniqueElementsInStringArray = (inp: Array<string>): Array<string> =>

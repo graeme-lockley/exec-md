@@ -1,9 +1,8 @@
-import type { IModule, Observer } from "../runtime";
+import { type IModule, type Observer, defineVariable } from "../runtime";
 
 import { parse } from "../parser";
 import { renderCode, valueUpdater } from "../plugins-helper";
 import type { Bindings, Options, Plugin } from "../plugins-helper";
-import { Eval } from "../Eval"
 
 interface JavascriptXView extends Plugin {
     hljs: any | undefined;
@@ -26,7 +25,7 @@ export const javascriptXView: JavascriptXView = {
     render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         const pr = parse(body);
 
-        if (pr.type === "assignment")
+        if (pr.type === "assignment" || pr.type === "exception") {
             if (render) {
                 const viewCellID = `js-x-view-${javascriptXView_count++}`;
                 const viewID = viewCellID + '-view';
@@ -35,35 +34,31 @@ export const javascriptXView: JavascriptXView = {
                 const renderer: Renderer =
                     () => renderCode(this.hljs, 'javascript', body);
 
+                const name = pr.type === "assignment" ? pr.name : undefined
+
                 const variableObserver: Observer =
-                    observer(viewID, codeID, pr.name, options.has('pin'), renderer)
+                    observer(viewID, codeID, name, options.has('pin'), renderer)
 
-                if (pr.name === undefined)
-                    module
-                        .variable(variableObserver)
-                        .define(pr.name, pr.dependencies, pr.result);
-                else {
-                    const viewCellName = `${pr.name}$$`;
+                if (pr.type === "assignment") {
+                    if (name === undefined)
+                        defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body);
+                    else {
+                        const viewCellName = `${pr.name}$$`;
 
-                    module
-                        .variable(variableObserver)
-                        .define(viewCellName, pr.dependencies, pr.result);
-
-                    module
-                        .variable()
-                        .define(pr.name, ["Generators", viewCellName], Eval(`(Generators, ${viewCellName}) => Generators.input(${viewCellName})`));
-                }
+                        defineVariable(module, variableObserver, viewCellName, pr.dependencies, pr.body)
+                        defineVariable(module, undefined, pr.name, ['Generators', viewCellName], `Generators.input(${viewCellName})`);
+                    }
+                } else
+                    module.variable(variableObserver).define(name, [], () => {
+                        throw pr.exception;
+                    });
 
                 return `<div id='${viewCellID}' class='nbv-js-x-view'><div id='${viewID}'></div><div id='${codeID}'></div></div>`;
-            } else if (pr.name === undefined)
-                return ''
-            else {
-                module
-                    .variable()
-                    .define(pr.name, [], Eval(`() => undefined`));
-
-                return '';
-            }
+            } else if (pr.type === "assignment" && pr.name !== undefined)
+                defineVariable(module, undefined, pr
+                    .name, [], 'undefined');
+            return '';
+        }
         else if (render)
             return `<div class='nbv-js-x-assert'>Unable to view an import</div>`
         else

@@ -1,11 +1,9 @@
-import type { IModule, Observer } from "../runtime";
+import { type IModule, type Observer, defineVariable } from "../runtime";
 
 import { parse, type ParseResult } from "../parser";
 import { valueUpdater, inspectorUpdater, renderCode } from "../plugins-helper";
 import type { Bindings, Inspector, Options, Plugin } from "../plugins-helper";
 import { importMarkup } from "../core";
-
-import { Eval } from "../Eval"
 
 interface JavascriptX extends Plugin {
     hljs: any | undefined;
@@ -28,7 +26,7 @@ export const javascriptX: JavascriptX = {
     render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         const pr: ParseResult = parse(body);
 
-        if (pr.type === "assignment") {
+        if (pr.type === "assignment" || pr.type === "exception") {
             if (render) {
                 const id = `js-x-${javascriptX_count++}`;
                 const observerID = id + '-observer';
@@ -37,22 +35,24 @@ export const javascriptX: JavascriptX = {
                 const renderer: Renderer =
                     () => renderCode(this.hljs, 'javascript', body);
 
-                const variableObserver =
-                    observer(observerID, codeID, pr.name, options.has('hide'), options.has('pin'), renderer);
+                const name = pr.type === "assignment" ? pr.name : undefined
 
-                module
-                    .variable(variableObserver)
-                    .define(pr.name, pr.dependencies, pr.result);
+                const variableObserver =
+                    observer(observerID, codeID, name, options.has('hide'), options.has('pin'), renderer);
+
+                if (pr.type === "assignment")
+                    defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body)
+                else
+                    module.variable(variableObserver).define(name, [], () => {
+                        throw pr.exception;
+                    });
 
                 return `<div id='${id}' class='nbv-js-x'><div id='${observerID}'></div><div id='${codeID}'></div></div>`;
             }
-            else {
-                module
-                    .variable()
-                    .define(pr.name, pr.dependencies, pr.result);
+            else if (pr.type === "assignment")
+                defineVariable(module, undefined, pr.name, pr.dependencies, pr.body)
 
-                return '';
-            }
+            return '';
         }
         else {
             fetch(pr.urn).then((r) => r.text()).then((t) => {
@@ -75,7 +75,7 @@ export const javascriptX: JavascriptX = {
 
                 const aliases = pr.names.map(({ name, alias }) => alias);
 
-                module.variable(variableObserver).define(undefined, aliases, Eval(`(${aliases.join(", ")}) => ({${aliases.join(", ")}})`));
+                defineVariable(module, variableObserver, undefined, aliases, `({${aliases.join(", ")}})`);
 
                 return `<div id='${id}' class='nbv-js-x'><div id='${observerID}'></div><div id='${codeID}'></div></div>`;
             } else

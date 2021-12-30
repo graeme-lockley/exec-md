@@ -23,3 +23,11 @@ export const createRuntime = (library?: any): IRuntime => {
 
   return new Runtime(library) as IRuntime
 }
+
+export const defineVariable = (module: IModule, observer: Observer | undefined, name: string | undefined, dependencies: Array<string>, body: string): void => {
+  module
+    .variable(observer)
+    .define(name, dependencies, Eval(`(${dependencies.join(", ")}) => ${body}`));
+}
+
+const Eval = eval;

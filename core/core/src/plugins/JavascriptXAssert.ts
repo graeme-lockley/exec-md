@@ -1,4 +1,4 @@
-import type { IModule, Observer } from "../runtime";
+import { type IModule, type Observer, defineVariable } from "../runtime";
 
 import { parse } from "../parser";
 import { renderCode, valueUpdater } from "../plugins-helper";
@@ -38,9 +38,7 @@ export const javascriptXAssert: JavascriptXAssert = {
                 const variableObserver: Observer =
                     observer(id, options.get('js-x-assert'), options.has('hide'), options.has('pin'), renderer);
 
-                module
-                    .variable(variableObserver)
-                    .define(pr.name, pr.dependencies, pr.result);
+                defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body);
 
                 return `<div id='${id}' class='nbv-js-x-assert'>Nothing to show</div>`;
             }

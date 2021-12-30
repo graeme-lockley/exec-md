@@ -1,5 +1,4 @@
 import { parseCell } from "@observablehq/parser";
-import { Eval } from "../Eval"
 
 export interface ImportStatement {
     type: "import";
@@ -12,11 +11,14 @@ export interface AssignmentStatement {
     name?: string;
     dependencies: Array<string>;
     body: string;
-    fullBody: string;
-    result: () => any
 }
 
-export type ParseResult = AssignmentStatement | ImportStatement;
+export interface ExceptionStatemnt {
+    type: "exception";
+    exception: any;
+}
+
+export type ParseResult = AssignmentStatement | ImportStatement | ExceptionStatemnt;
 
 export const parse = (code: string): ParseResult => {
     try {
@@ -24,7 +26,7 @@ export const parse = (code: string): ParseResult => {
 
         if (ast?.body?.type === "ImportDeclaration") {
             const names: Array<{ name: string; alias: string }> =
-                ast.body.specifiers.map(s => ({ name: s.imported.name, alias: s.local.name }));
+                ast.body.specifiers.map((s: any) => ({ name: s.imported.name, alias: s.local.name }));
 
             const urn: string =
                 ast.body.source.value;
@@ -36,14 +38,10 @@ export const parse = (code: string): ParseResult => {
             const dependencies = uniqueElementsInStringArray(referencedNames);
             const body = code.slice(ast.body.start, ast.body.end);
 
-            const fullBody = `(${dependencies.join(", ")}) => ${body}`;
-
-            const result = Eval(fullBody);
-
-            return { type: "assignment", name, dependencies, body, fullBody, result };
+            return { type: "assignment", name, dependencies, body };
         }
     } catch (e) {
-        return { type: "assignment", name: undefined, dependencies: [], body: code, fullBody: code, result: () => { throw e; } };
+        return { type: "exception", exception: e };
     }
 }
 
