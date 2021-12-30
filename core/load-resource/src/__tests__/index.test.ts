@@ -8,9 +8,9 @@ describe('loadSource', () => {
   test('valid URL', async () => {
     globalThis.fetch = validFetch
 
-    const csv = await loadAsText(ARB_URL)
+    const text = await loadAsText(ARB_URL)
 
-    expect(csv).toEqual(ARB_TEXT)
+    expect(text).toEqual(ARB_TEXT)
   })
 
   test('invalid URL', async () => {
@@ -25,6 +25,7 @@ describe('load', () => {
     globalThis.fetch = validFetch
 
     const text = await load(ARB_URL)
+
     expect(text).toEqual(ARB_TEXT)
   })
 
@@ -35,16 +36,14 @@ describe('load', () => {
   })
 })
 
-const validFetch = (url: string): Promise<any> => {
-  return Promise.resolve({
+const validFetch = (url: string): Promise<any> =>
+  Promise.resolve({
     ok: true,
     text: () => Promise.resolve(ARB_TEXT)
   })
-}
 
-const invalidFetch = (url: string): Promise<any> => {
-  return Promise.reject(new Error(INVALID_URL_RESPONSE))
-}
+const invalidFetch = (url: string): Promise<any> =>
+  Promise.reject(new Error(INVALID_URL_RESPONSE))
 
 const loadAsText = async (url: string): Promise<any> => {
   const c = loadSource(url) as any

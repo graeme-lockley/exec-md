@@ -2,9 +2,8 @@ import { AbstractFile } from '@observablehq/stdlib'
 
 export const load = async (name: string) => {
   const fetchResponse = await fetch(name)
-  const text = await fetchResponse.text()
 
-  return text
+  return await fetchResponse.text()
 }
 
 class FA extends AbstractFile {
