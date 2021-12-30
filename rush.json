@@ -429,8 +429,8 @@
     //   "reviewCategory": "tools"
     // }
     {
-      "packageName": "core",
-      "projectFolder": "core/core"
+      "packageName": "sample-svelte",
+      "projectFolder": "apps/sample-svelte"
     },
     {
       "packageName": "load-resource",
