@@ -4,7 +4,6 @@ import type { Options, Plugin, Plugins } from "../plugins-helper";
 import hljs from "highlight.js/lib/core";
 import type { IModule } from "../runtime";
 
-import { javascript } from "../plugins/Javascript";
 import { javascriptX } from "../plugins/JavascriptX";
 import { javascriptXAssert } from "../plugins/JavascriptXAssert";
 import { javascriptXInline } from "../plugins/JavascriptXInline";
@@ -17,7 +16,6 @@ const plugins = [
     javascriptXView,
     javascriptXInline,
     javascriptX,
-    javascript,
     krokiX
 ];
 plugins.filter((p) => p.setup !== undefined).map((p) => p.setup(bindings));
