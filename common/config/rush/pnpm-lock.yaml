@@ -11,6 +11,7 @@ specifiers:
   '@rollup/plugin-node-resolve': ^13.1.1
   '@rollup/plugin-typescript': ^8.0.0
   '@rush-temp/load-resource': file:./projects/load-resource.tgz
+  '@rush-temp/plugin-common': file:./projects/plugin-common.tgz
   '@rush-temp/runtime': file:./projects/runtime.tgz
   '@rush-temp/sample-svelte': file:./projects/sample-svelte.tgz
   '@testing-library/jest-dom': ^5.11.4
@@ -53,6 +54,7 @@ dependencies:
   '@rollup/plugin-node-resolve': 13.1.1_rollup@2.62.0
   '@rollup/plugin-typescript': 8.3.0_rollup@2.62.0+tslib@2.3.1
   '@rush-temp/load-resource': file:projects/load-resource.tgz_274c11851c514cb702df560455ceaf3f
+  '@rush-temp/plugin-common': file:projects/plugin-common.tgz_274c11851c514cb702df560455ceaf3f
   '@rush-temp/runtime': file:projects/runtime.tgz_274c11851c514cb702df560455ceaf3f
   '@rush-temp/sample-svelte': file:projects/sample-svelte.tgz_ts-node@10.4.0
   '@testing-library/jest-dom': 5.16.1
@@ -5883,6 +5885,42 @@ packages:
     dependencies:
       '@jest/types': 27.4.2
       '@observablehq/stdlib': 3.15.3
+      '@types/jest': 27.0.3
+      '@typescript-eslint/eslint-plugin': 5.8.1_3a47348159e115370aa4cba56aba33b6
+      '@typescript-eslint/parser': 5.8.1_eslint@8.5.0+typescript@4.5.4
+      eslint: 8.5.0
+      eslint-config-standard: 16.0.3_4cecef3480376bac71ded249816d1e72
+      eslint-plugin-import: 2.25.3_eslint@8.5.0
+      eslint-plugin-jest: 25.3.2_8e4587ffdbad7ecbf6b0774bd21bf51b
+      eslint-plugin-node: 11.1.0_eslint@8.5.0
+      eslint-plugin-promise: 6.0.0_eslint@8.5.0
+      jest: 27.4.5_ts-node@10.4.0
+      pnpm: 6.24.4
+      ts-jest: 27.1.2_7d2f554c34b4e21ded0571d465f52193
+      ts-node: 10.4.0_bad060d5f9aca5284661d88d739ba15b
+      typescript: 4.5.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-jest
+      - bufferutil
+      - canvas
+      - esbuild
+      - node-notifier
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  file:projects/plugin-common.tgz_274c11851c514cb702df560455ceaf3f:
+    resolution: {integrity: sha512-WnQejixoKPINPD8MEqxPd/39O7B125Z9lmKjvu0IhYQGOwL7jwhCs8epAYQ+FkDRn+0I/y+uJLFsX2o4dPvnAQ==, tarball: file:projects/plugin-common.tgz}
+    id: file:projects/plugin-common.tgz
+    name: '@rush-temp/plugin-common'
+    version: 0.0.0
+    dependencies:
+      '@jest/types': 27.4.2
+      '@observablehq/inspector': 3.2.4
       '@types/jest': 27.0.3
       '@typescript-eslint/eslint-plugin': 5.8.1_3a47348159e115370aa4cba56aba33b6
       '@typescript-eslint/parser': 5.8.1_eslint@8.5.0+typescript@4.5.4

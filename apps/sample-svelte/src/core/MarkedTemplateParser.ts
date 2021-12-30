@@ -1,6 +1,5 @@
 import { marked } from "marked";
-import { parseInfoString, renderCode } from "../plugins-helper";
-import type { Options, Plugin, Plugins } from "../plugins-helper";
+import { parseInfoString, renderCode, type Options, type Plugin, type Plugins } from "plugin-common";
 import hljs from "highlight.js/lib/core";
 import type { IModule } from "runtime";
 

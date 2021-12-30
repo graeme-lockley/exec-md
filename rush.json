@@ -437,6 +437,10 @@
       "projectFolder": "core/runtime"
     },
     {
+      "packageName": "plugin-common",
+      "projectFolder": "core/plugin-common"
+    },
+    {
       "packageName": "load-resource",
       "projectFolder": "core/load-resource"
     }

@@ -1,8 +1,8 @@
 import { type IModule, type Observer, defineVariable } from "runtime";
 
 import { parse } from "../parser";
-import { valueUpdater } from "../plugins-helper";
-import type { Bindings, Options, Plugin } from "../plugins-helper";
+import { valueUpdater } from "plugin-common";
+import type { Bindings, Options, Plugin } from "plugin-common";
 
 interface JavascriptXInline extends Plugin {
     hljs: any | undefined;

@@ -1,7 +1,7 @@
 import { type IModule, type Observer, defineVariable } from "runtime";
 
-import { renderCode, valueUpdater } from "../plugins-helper";
-import type { Bindings, Options, Plugin } from "../plugins-helper";
+import { valueUpdater, renderCode } from "plugin-common";
+import type { Bindings, Options, Plugin } from "plugin-common";
 import { parseCell } from "@observablehq/parser";
 
 interface KrokiX extends Plugin {
@@ -43,7 +43,7 @@ export const krokiX: KrokiX = {
         this.hljs = bindings.get('hljs');
     },
 
-    render: function (module:IModule, body: string, options: Options, render: boolean): string | Node {
+    render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         if (render) {
             const id = `kroki-x-${krokiX_count++}`;
             const observerID = id + '-value';

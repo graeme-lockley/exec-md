@@ -1,8 +1,8 @@
 import { type IModule, type Observer, defineVariable } from "runtime";
 
 import { parse } from "../parser";
-import { renderCode, valueUpdater } from "../plugins-helper";
-import type { Bindings, Options, Plugin } from "../plugins-helper";
+import { valueUpdater, renderCode } from "plugin-common";
+import type { Bindings, Options, Plugin } from "plugin-common";
 
 interface JavascriptXAssert extends Plugin {
     hljs: any | undefined;
