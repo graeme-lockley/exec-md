@@ -4,14 +4,14 @@ test("empty string returns () => ``", () => {
     const value = functionFromBody("");
 
     expect(value.names).toEqual([]);
-    expect(value.body).toEqual("() => ``");
+    expect(value.body).toEqual("``");
 });
 
 test("an arbitrary string returns thunk mapping onto the string", () => {
     const value = functionFromBody("hello world");
 
     expect(value.names).toEqual([]);
-    expect(value.body).toEqual("() => `hello world`");
+    expect(value.body).toEqual("`hello world`");
 });
 
 test("an arbitrary string with ${} expressions with no free variables returns thunk mapping onto the string with embedded expressions", () => {
@@ -19,7 +19,7 @@ test("an arbitrary string with ${} expressions with no free variables returns th
 
     expect(value.names).toEqual([]);
     expect(value.body)
-        .toEqual("() => `hello ${1 + 2} ${'this' + ' ' + 'works'} world`");
+        .toEqual("`hello ${1 + 2} ${'this' + ' ' + 'works'} world`");
 });
 
 test("an arbitrary string with ${} expressions with free variables returns a function with the free variables passed as arguments", () => {
@@ -27,7 +27,7 @@ test("an arbitrary string with ${} expressions with free variables returns a fun
 
     expect(value.names).toEqual(['a', 'b', 'c']);
     expect(value.body)
-        .toEqual("(a, b, c) => `hello ${a + b} ${b + c} world`");
+        .toEqual("`hello ${a + b} ${b + c} world`");
 });
 
 test("an arbitrary string with an parse error in a ${} expression", () => {
@@ -35,10 +35,10 @@ test("an arbitrary string with an parse error in a ${} expression", () => {
 
     expect(value.names).toEqual([]);
     expect(value.body)
-        .toEqual("() => `hello {SyntaxError: Unexpected end of input (1:4)} world`");
+        .toEqual("`hello {SyntaxError: Unexpected end of input (1:4)} world`");
 });
 
 test("escape literal strings that have a \\ so that the backslash is not lost", () => {
     expect(functionFromBody("\\n").body)
-        .toEqual("() => `\\\\n`");
+        .toEqual("`\\\\n`");
 });

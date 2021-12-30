@@ -1,11 +1,10 @@
 import { Runtime } from "@observablehq/runtime";
 import { importMarkup } from "../core";
 
-import fetch from "cross-fetch";
+import hljs from "highlight.js/lib/core";
+import javascript_highlighter from "highlight.js/lib/languages/javascript";
 
-if (globalThis.fetch === undefined) {
-    globalThis.fetch = fetch as any;
-}
+hljs.registerLanguage("js", javascript_highlighter);
 
 test("Empty content results in an empty module", () => {
     const content = '';
@@ -113,11 +112,36 @@ import { y as value, createList } from "https://graeme-lockley.github.io/noteboo
 \`\`\`
 `;
 
+    const fetchResult = `
+\`\`\` js x | pin
+x = 10
+\`\`\`
+
+\`\`\` js x | pin
+y = x + 10
+\`\`\`
+
+\`\`\` js x | pin
+seconds = Math.floor(now / 1000)
+\`\`\`
+
+\`\`\` js x | pin
+createList = (width) => 
+    Array(width).fill(0).map(_ => Math.random())
+\`\`\`
+
+\`\`\` js x | pin
+createList(10)
+\`\`\`    
+`;
+
+    globalThis.fetch = validFetch(fetchResult);
+
     const module = runtime.module();
 
     importMarkup(content, module);
 
-    await delay(3000);
+    await delay(1000);
 
     expect(module._scope.size).toEqual(2);
 
@@ -127,3 +151,10 @@ import { y as value, createList } from "https://graeme-lockley.github.io/noteboo
 
 const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
+
+const validFetch = (result: string) => (url: string): Promise<any> =>
+    Promise.resolve({
+        ok: true,
+        text: () => Promise.resolve(result)
+    })
+
