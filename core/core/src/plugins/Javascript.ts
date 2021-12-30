@@ -1,7 +1,7 @@
 import type { IModule } from "../runtime";
 
-import { renderCode } from "../plugins-helper/Helpers";
-import type { Bindings, Options, Plugin } from "../plugins-helper/Plugin";
+import { renderCode } from "../plugins-helper";
+import type { Bindings, Options, Plugin } from "../plugins-helper";
 
 interface Javascript extends Plugin {
     hljs: any | undefined;

@@ -1,9 +1,8 @@
-import type { IModule } from "../runtime";
+import type { IModule, Observer } from "../runtime";
 
 import { parse } from "../Parser";
-import type { Observer } from "../runtime";
-import { valueUpdater } from "../plugins-helper/Helpers";
-import type { Bindings, Options, Plugin } from "../plugins-helper/Plugin";
+import { valueUpdater } from "../plugins-helper";
+import type { Bindings, Options, Plugin } from "../plugins-helper";
 
 interface JavascriptXInline extends Plugin {
     hljs: any | undefined;
