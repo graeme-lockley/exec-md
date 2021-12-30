@@ -3,7 +3,7 @@
     import javascript_highlighter from "highlight.js/lib/languages/javascript";
     import plaintext_highlighter from "highlight.js/lib/languages/plaintext";
     import "highlight.js/styles/base16/papercolor-light.css";
-    import { markedParser } from "./MarkedTemplateParser";
+    import { translateMarkup } from "./MarkedTemplateParser";
     import { createRuntime } from "./runtime";
     import type { IModule, IRuntime } from "./runtime";
 
@@ -29,5 +29,5 @@
 </script>
 
 {#await fetch(sourceURL).then((r) => r.text()) then text}
-    {@html markedParser(text, module)}
+    {@html translateMarkup(text, module)}
 {/await}

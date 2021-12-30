@@ -3,7 +3,7 @@ import type { IModule, Observer } from "../runtime";
 import { parse, type ParseResult } from "../Parser";
 import { valueUpdater, inspectorUpdater, renderCode } from "../plugins-helper";
 import type { Bindings, Inspector, Options, Plugin } from "../plugins-helper";
-import { importParser } from "../MarkedTemplateParser";
+import { importMarkup } from "../MarkedTemplateParser";
 
 import { Eval } from "../Eval"
 
@@ -57,7 +57,7 @@ export const javascriptX: JavascriptX = {
         else {
             fetch(pr.urn).then((r) => r.text()).then((t) => {
                 const newModule = module._runtime.module();
-                importParser(t, newModule);
+                importMarkup(t, newModule);
 
                 pr.names.forEach(({ name, alias }) => module.variable().import(name, alias, newModule));
             }).catch(e => console.log(e));

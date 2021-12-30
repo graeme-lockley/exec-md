@@ -1,7 +1,7 @@
 import { parseInfoString } from "./Parser";
 import { marked } from "marked";
-import { renderCode } from "./plugins-helper/Helpers";
-import type { Options, Plugin, Plugins } from "./plugins-helper/Plugin";
+import { renderCode } from "./plugins-helper";
+import type { Options, Plugin, Plugins } from "./plugins-helper";
 import hljs from "highlight.js/lib/core";
 import type { IModule } from "./runtime";
 
@@ -84,11 +84,10 @@ const inlineExpression = {
 
 marked.use({ renderer, extensions: [inlineExpression] });
 
-
-export const markedParser = (text: string, module: IModule): string =>
+export const translateMarkup = (text: string, module: IModule): string =>
     marked.parse(text, { nbv_module: module, nbv_render: true });
 
-export const importParser = (text: string, module: IModule) =>
+export const importMarkup = (text: string, module: IModule): void =>
     marked.parse(text, { nbv_module: module, nbv_render: false });
 
 function find(
