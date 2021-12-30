@@ -433,6 +433,10 @@
       "projectFolder": "apps/sample-svelte"
     },
     {
+      "packageName": "runtime",
+      "projectFolder": "core/runtime"
+    },
+    {
       "packageName": "load-resource",
       "projectFolder": "core/load-resource"
     }

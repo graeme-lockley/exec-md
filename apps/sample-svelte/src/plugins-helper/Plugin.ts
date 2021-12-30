@@ -1,4 +1,4 @@
-import type { IModule } from "../runtime";
+import type { IModule } from "runtime";
 
 export type Bindings = Map<string, any>;
 export type Options = Map<string, string>;

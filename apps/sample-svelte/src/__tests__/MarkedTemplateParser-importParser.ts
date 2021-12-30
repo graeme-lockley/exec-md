@@ -1,4 +1,4 @@
-import { createRuntime } from "../runtime";
+import { createRuntime } from "runtime";
 import { importMarkup } from "../core";
 
 import hljs from "highlight.js/lib/core";

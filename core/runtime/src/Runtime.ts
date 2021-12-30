@@ -1,10 +1,11 @@
-import { Runtime } from "@observablehq/runtime";
+import { Runtime } from '@observablehq/runtime'
 
-import { defaultLibrary } from "./Library";
-import type { Observer } from "./Observer"
+import { defaultLibrary } from './Library'
+import type { Observer } from './Observer'
 
 export interface IRuntime {
   dispose(): void
+  // eslint-disable-next-line no-use-before-define
   module(): IModule
 }
 
@@ -12,6 +13,7 @@ export interface IModule {
   _runtime: IRuntime
   _scope: Map<string, Promise<any>>
 
+  // eslint-disable-next-line no-use-before-define
   variable(observer?: Observer): IVariable
   value(name: string): Promise<any>
 }
@@ -28,10 +30,10 @@ export const createRuntime = (library?: any): IRuntime => {
   return new Runtime(library) as IRuntime
 }
 
-export const defineVariable = (module: IModule, observer: Observer | undefined, name: string | undefined, dependencies: Array<string>, body: string): void => {
+export const defineVariable = (module: IModule, observer: Observer | undefined, name: string | undefined, dependencies: Array<string>, body: string): void =>
   module
     .variable(observer)
-    .define(name, dependencies, Eval(`(${dependencies.join(", ")}) => ${body}`));
-}
+    .define(name, dependencies, Eval(`(${dependencies.join(', ')}) => ${body}`))
 
-const Eval = eval;
+// eslint-disable-next-line no-eval
+const Eval = eval

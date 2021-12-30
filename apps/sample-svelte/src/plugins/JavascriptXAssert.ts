@@ -1,4 +1,4 @@
-import { type IModule, type Observer, defineVariable } from "../runtime";
+import { type IModule, type Observer, defineVariable } from "runtime";
 
 import { parse } from "../parser";
 import { renderCode, valueUpdater } from "../plugins-helper";
