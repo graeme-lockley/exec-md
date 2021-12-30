@@ -1,4 +1,4 @@
-import { Inspector } from "@observablehq/runtime";
+import { Inspector } from "@observablehq/inspector";
 
 export const valueUpdater = (elementID: string): ((content: string | Node) => void) => {
     let last = Date.now();
