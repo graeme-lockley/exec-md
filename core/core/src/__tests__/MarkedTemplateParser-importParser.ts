@@ -1,5 +1,5 @@
 import { Runtime } from "@observablehq/runtime";
-import { importMarkup } from "../MarkedTemplateParser";
+import { importMarkup } from "../core";
 
 import fetch from "cross-fetch";
 

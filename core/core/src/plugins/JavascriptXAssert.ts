@@ -1,6 +1,6 @@
 import type { IModule, Observer } from "../runtime";
 
-import { parse } from "../Parser";
+import { parse } from "../parser";
 import { renderCode, valueUpdater } from "../plugins-helper";
 import type { Bindings, Options, Plugin } from "../plugins-helper";
 
@@ -23,7 +23,7 @@ export const javascriptXAssert: JavascriptXAssert = {
         this.hljs = bindings.get('hljs');
     },
 
-    render: function (module:IModule, body: string, options: Options, render: boolean): string | Node {
+    render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
         if (render) {
             const pr =
                 parse(body);

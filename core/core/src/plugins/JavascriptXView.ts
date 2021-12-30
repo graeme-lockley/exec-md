@@ -1,6 +1,6 @@
 import type { IModule, Observer } from "../runtime";
 
-import { parse } from "../Parser";
+import { parse } from "../parser";
 import { renderCode, valueUpdater } from "../plugins-helper";
 import type { Bindings, Options, Plugin } from "../plugins-helper";
 import { Eval } from "../Eval"

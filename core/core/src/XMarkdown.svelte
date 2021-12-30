@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { translateMarkup } from "./MarkedTemplateParser";
+    import { translateMarkup } from "./core";
     import { createRuntime } from "./runtime";
     import type { IModule, IRuntime } from "./runtime";
 

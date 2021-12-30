@@ -1,9 +1,9 @@
 import type { IModule, Observer } from "../runtime";
 
-import { parse, type ParseResult } from "../Parser";
+import { parse, type ParseResult } from "../parser";
 import { valueUpdater, inspectorUpdater, renderCode } from "../plugins-helper";
 import type { Bindings, Inspector, Options, Plugin } from "../plugins-helper";
-import { importMarkup } from "../MarkedTemplateParser";
+import { importMarkup } from "../core";
 
 import { Eval } from "../Eval"
 

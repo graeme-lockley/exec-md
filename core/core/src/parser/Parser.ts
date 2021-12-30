@@ -1,5 +1,5 @@
 import { parseCell } from "@observablehq/parser";
-import { Eval } from "./Eval"
+import { Eval } from "../Eval"
 
 export interface ImportStatement {
     type: "import";
@@ -50,10 +50,3 @@ export const parse = (code: string): ParseResult => {
 const uniqueElementsInStringArray = (inp: Array<string>): Array<string> =>
     Array.from(new Set<string>(inp))
 
-export const parseInfoString = (infostring: string): Map<string, string> => {
-    return new Map(infostring.split("|").map(s => s.trim()).map(s => {
-        const i = s.indexOf(' ');
-
-        return i == -1 ? [s, ''] : [s.slice(0, i), s.slice(i + 1).trim()];
-    }));
-}
