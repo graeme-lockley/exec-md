@@ -1,15 +1,7 @@
 <script lang="ts">
-    import hljs from "highlight.js/lib/core";
-    import javascript_highlighter from "highlight.js/lib/languages/javascript";
-    import plaintext_highlighter from "highlight.js/lib/languages/plaintext";
-    import "highlight.js/styles/base16/papercolor-light.css";
     import { translateMarkup } from "./MarkedTemplateParser";
     import { createRuntime } from "./runtime";
     import type { IModule, IRuntime } from "./runtime";
-
-    hljs.registerLanguage("javascript", javascript_highlighter);
-    hljs.registerLanguage("js", javascript_highlighter);
-    hljs.registerLanguage("plaintext", plaintext_highlighter);
 
     let runtime: IRuntime | undefined = undefined;
     let module: IModule = undefined;
