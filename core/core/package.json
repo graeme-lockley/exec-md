@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rollup -c 2>&1",
+    "build": "pnpm test && pnpm package",
+    "package": "rollup -c 2>&1",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "jest",
-    "test-watch": "npm test -- --watch"
+    "test": "jest --coverage --coverageReporters='text-summary' 2>&1",
+    "test-watch": "pnpm test -- --watch"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.5",
