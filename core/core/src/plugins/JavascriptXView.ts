@@ -52,7 +52,7 @@ export const javascriptXView: JavascriptXView = {
 
                     module
                         .variable()
-                        .define(pr.name, [viewCellName], Eval(`(${viewCellName}) => Generators.input(${viewCellName})`));
+                        .define(pr.name, ["Generators", viewCellName], Eval(`(Generators, ${viewCellName}) => Generators.input(${viewCellName})`));
                 }
 
                 return `<div id='${viewCellID}' class='nbv-js-x-view'><div id='${viewID}'></div><div id='${codeID}'></div></div>`;
