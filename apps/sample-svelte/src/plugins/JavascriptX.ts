@@ -54,7 +54,8 @@ export const javascriptX: JavascriptX = {
 
             return '';
         }
-        else {
+        else 
+        {
             fetch(pr.urn).then((r) => r.text()).then((t) => {
                 const newModule = module._runtime.module();
                 importMarkup(t, newModule);

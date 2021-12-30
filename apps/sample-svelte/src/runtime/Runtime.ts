@@ -10,12 +10,16 @@ export interface IRuntime {
 
 export interface IModule {
   _runtime: IRuntime
+  _scope: Map<string, Promise<any>>
+
   variable(observer?: Observer): IVariable
+  value(name: string): Promise<any>
 }
 
 export interface IVariable {
   define(name: string | undefined, dependencies: Array<string>, body: any): void
-  import(name: string, alias: string | undefined, fromModule: IModule): void
+  import(name: string, alias: string | null, fromModule: IModule): void
+  import(name: string, fromModule: IModule): void
 }
 
 export const createRuntime = (library?: any): IRuntime => {

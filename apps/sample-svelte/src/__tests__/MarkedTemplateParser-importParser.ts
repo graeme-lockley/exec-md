@@ -1,4 +1,4 @@
-import { Runtime } from "@observablehq/runtime";
+import { createRuntime } from "../runtime";
 import { importMarkup } from "../core";
 
 import hljs from "highlight.js/lib/core";
@@ -9,7 +9,7 @@ hljs.registerLanguage("js", javascript_highlighter);
 test("Empty content results in an empty module", () => {
     const content = '';
 
-    const runtime = new Runtime();
+    const runtime = createRuntime();
     const module = runtime.module();
     importMarkup(content, module);
 
@@ -22,7 +22,7 @@ test("Content without any bindings results in an empty module", () => {
 Some text
 `;
 
-    const runtime = new Runtime();
+    const runtime = createRuntime();
     const module = runtime.module();
     importMarkup(content, module);
 
@@ -42,7 +42,7 @@ x = 10
 \`\`\`
 `;
 
-    const runtime = new Runtime();
+    const runtime = createRuntime();
     const module = runtime.module();
     importMarkup(content, module);
 
@@ -63,7 +63,7 @@ y = 10
 \`\`\`
 `;
 
-    const runtime = new Runtime();
+    const runtime = createRuntime();
     const module = runtime.module();
     importMarkup(content, module);
 
@@ -73,7 +73,7 @@ y = 10
 });
 
 test("An imported value is visible in the module where it is referenced", async () => {
-    const runtime = new Runtime();
+    const runtime = createRuntime();
 
     const importedContent = `# Heading
 Some text
@@ -95,14 +95,14 @@ y = 10
     module.variable().import("x", importedModule);
     module.variable().define("z", ["x"], (x: number) => x * 2);
 
-    expect(module._scope.size).toEqual(2);
-
     expect(await module.value("x")).toEqual(20);
     expect(await module.value("z")).toEqual(40);
+
+    expect(module._scope.size).toEqual(2);
 });
 
 test("Import a module inside a js x block", async () => {
-    const runtime = new Runtime();
+    const runtime = createRuntime();
 
     const content = `# Heading
 Some text
