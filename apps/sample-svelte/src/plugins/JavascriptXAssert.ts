@@ -1,8 +1,8 @@
-import { type IModule, type Observer, defineVariable } from "runtime";
+import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
 import { parse } from "../parser";
-import { valueUpdater, renderCode } from "plugin-common";
-import type { Bindings, Options, Plugin } from "plugin-common";
+import { valueUpdater, renderCode } from "@execmd/plugin-common";
+import type { Bindings, Options, Plugin } from "@execmd/plugin-common";
 
 interface JavascriptXAssert extends Plugin {
     hljs: any | undefined;

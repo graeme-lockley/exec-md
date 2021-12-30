@@ -1,7 +1,7 @@
 import { marked } from "marked";
-import { parseInfoString, renderCode, type Options, type Plugin, type Plugins } from "plugin-common";
+import { parseInfoString, renderCode, type Options, type Plugin, type Plugins } from "@execmd/plugin-common";
 import hljs from "highlight.js/lib/core";
-import type { IModule } from "runtime";
+import type { IModule } from "@execmd/runtime";
 
 import { javascriptX } from "../plugins/JavascriptX";
 import { javascriptXAssert } from "../plugins/JavascriptXAssert";

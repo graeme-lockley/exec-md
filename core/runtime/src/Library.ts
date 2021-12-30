@@ -1,5 +1,5 @@
 import { Library } from '@observablehq/runtime'
-import { loadSource } from 'load-resource'
+import { loadSource } from '@execmd/load-resource'
 
 const localBindings = {
   load: () => (url: string) => loadSource(url)

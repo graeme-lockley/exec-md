@@ -429,19 +429,19 @@
     //   "reviewCategory": "tools"
     // }
     {
-      "packageName": "sample-svelte",
+      "packageName": "@execmd/sample-svelte",
       "projectFolder": "apps/sample-svelte"
     },
     {
-      "packageName": "runtime",
+      "packageName": "@execmd/runtime",
       "projectFolder": "core/runtime"
     },
     {
-      "packageName": "plugin-common",
+      "packageName": "@execmd/plugin-common",
       "projectFolder": "core/plugin-common"
     },
     {
-      "packageName": "load-resource",
+      "packageName": "@execmd/load-resource",
       "projectFolder": "core/load-resource"
     }
   ]

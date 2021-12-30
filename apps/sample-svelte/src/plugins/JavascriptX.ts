@@ -1,8 +1,8 @@
-import { type IModule, type Observer, defineVariable } from "runtime";
+import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
 import { parse, type ParseResult } from "../parser";
-import { valueUpdater, inspectorUpdater, renderCode } from "plugin-common";
-import type { Bindings, Inspector, Options, Plugin } from "plugin-common";
+import { valueUpdater, inspectorUpdater, renderCode } from "@execmd/plugin-common";
+import type { Bindings, Inspector, Options, Plugin } from "@execmd/plugin-common";
 import { importMarkup } from "../core";
 
 interface JavascriptX extends Plugin {

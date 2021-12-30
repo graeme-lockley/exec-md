@@ -1,7 +1,7 @@
-import { type IModule, type Observer, defineVariable } from "runtime";
+import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
-import { valueUpdater, renderCode } from "plugin-common";
-import type { Bindings, Options, Plugin } from "plugin-common";
+import { valueUpdater, renderCode } from "@execmd/plugin-common";
+import type { Bindings, Options, Plugin } from "@execmd/plugin-common";
 import { parseCell } from "@observablehq/parser";
 
 interface KrokiX extends Plugin {
