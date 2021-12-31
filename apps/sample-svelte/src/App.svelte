@@ -1,33 +1,10 @@
 <script lang="ts">
-	import hljs from "highlight.js/lib/core";
-	import javascript_highlighter from "highlight.js/lib/languages/javascript";
-	import plaintext_highlighter from "highlight.js/lib/languages/plaintext";
 	import "highlight.js/styles/base16/papercolor-light.css";
+	import { standardSetup } from "@execmd/core";
 
 	import XMarkdown from "./XMarkdown.svelte";
 
-	import { javascriptX } from "@execmd/plugin-javascript-x";
-	import { javascriptXAssert } from "@execmd/plugin-javascript-x-assert";
-	import { javascriptXInline } from "@execmd/plugin-javascript-x-inline";
-	import { javascriptXView } from "@execmd/plugin-javascript-x-view";
-	import { krokiX } from "@execmd/plugin-kroki-x";
-
-	import { setup } from "@execmd/core";
-
-	hljs.registerLanguage("javascript", javascript_highlighter);
-	hljs.registerLanguage("js", javascript_highlighter);
-	hljs.registerLanguage("plaintext", plaintext_highlighter);
-
-	setup(
-		[
-			javascriptXAssert,
-			javascriptXView,
-			javascriptXInline,
-			javascriptX,
-			krokiX,
-		],
-		new Map([["hljs", hljs]])
-	);
+	standardSetup()
 
 	let examples = [
 		{ id: 0, text: "Simple Reactive Components", resource: "simple.md" },

@@ -16,10 +16,6 @@
     },
     "devDependencies": {
         "@jest/types": "~27.4.2",
-        
-        "@execmd/plugin-javascript-x": "~1.0.0",
-        "@execmd/plugin-kroki-x": "~1.0.0",
-    
         "@types/jest": "~27.0.3",
         "@typescript-eslint/eslint-plugin": "~5.8.1",
         "@typescript-eslint/parser": "~5.8.1",
@@ -36,8 +32,14 @@
         "typescript": "~4.5.4"
     },
     "dependencies": {
-        "@execmd/plugin-common": "~1.0.0",
         "@execmd/runtime": "~1.0.0",
+        "@execmd/plugin-common": "~1.0.0",
+        "@execmd/plugin-javascript-x": "~1.0.0",
+        "@execmd/plugin-javascript-x-assert": "~1.0.0",
+        "@execmd/plugin-javascript-x-inline": "~1.0.0",
+        "@execmd/plugin-javascript-x-view": "~1.0.0",
+        "@execmd/plugin-kroki-x": "~1.0.0",
+        "highlight.js": "^11.3.1",
         "marked": "^4.0.6"
     }
 }

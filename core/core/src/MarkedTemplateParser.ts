@@ -2,7 +2,15 @@ import { marked } from 'marked'
 import { parseInfoString, renderCode, setup as pluginSetup, type Bindings, type Options, type Plugin, type Plugins } from '@execmd/plugin-common'
 import type { IModule } from '@execmd/runtime'
 
+import { standardSetup as ss } from './StandardSetup'
+
 let hljs
+
+export const standardSetup = (): void => {
+  const settings = ss()
+
+  setup(settings.plugins, settings.bindings)
+}
 
 export const setup = (plugins: Plugins, bindings: Bindings): void => {
   hljs = bindings.get('hljs')
