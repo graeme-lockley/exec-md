@@ -6,8 +6,8 @@ import { standardSetup as ss } from './StandardSetup'
 
 let hljs
 
-export const standardSetup = (): void => {
-  const settings = ss()
+export const standardSetup = (hljs: any): void => {
+  const settings = ss(hljs)
 
   setup(settings.plugins, settings.bindings)
 }

@@ -8,7 +8,7 @@
         "/dist"
     ],
     "scripts": {
-        "test": "echo Success",
+        "test": "jest --coverage --coverageReporters='text-summary' 2>&1",
         "test-watch": "pnpm test -- --watch",
         "lint": "eslint --fix 'src/**/*.ts'",
         "package": "tsc",

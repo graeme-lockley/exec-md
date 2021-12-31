@@ -1,10 +1,18 @@
 <script lang="ts">
+	import hljs from "highlight.js/lib/core";
+	import javascriptHighlighter from "highlight.js/lib/languages/javascript";
+	import plaintextHighlighter from "highlight.js/lib/languages/plaintext";
+
 	import "highlight.js/styles/base16/papercolor-light.css";
 	import { standardSetup } from "@execmd/core";
 
 	import XMarkdown from "./XMarkdown.svelte";
 
-	standardSetup()
+	hljs.registerLanguage("javascript", javascriptHighlighter);
+	hljs.registerLanguage("js", javascriptHighlighter);
+	hljs.registerLanguage("plaintext", plaintextHighlighter);
+
+	standardSetup(hljs);
 
 	let examples = [
 		{ id: 0, text: "Simple Reactive Components", resource: "simple.md" },
