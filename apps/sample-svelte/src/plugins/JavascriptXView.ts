@@ -1,8 +1,7 @@
 import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
 import { parse } from "../parser";
-import { valueUpdater, renderCode } from "@execmd/plugin-common";
-import type { Bindings, Options, Plugin } from "@execmd/plugin-common";
+import { valueUpdater, renderCode, type Bindings, type Options, type Plugin } from "@execmd/plugin-common";
 
 interface JavascriptXView extends Plugin {
     hljs: any | undefined;
