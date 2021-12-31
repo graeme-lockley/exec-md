@@ -11,3 +11,7 @@ export interface Plugin {
 }
 
 export type Plugins = Array<Plugin>;
+
+export const setup = (plugins: Plugins, bindings: Bindings): void => {
+  plugins.filter((p) => p.setup !== undefined).map((p) => p.setup(bindings))
+}

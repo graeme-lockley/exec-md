@@ -1,5 +1,5 @@
 import { marked } from "marked";
-import { parseInfoString, renderCode, type Options, type Plugin, type Plugins } from "@execmd/plugin-common";
+import { parseInfoString, renderCode, setup as pluginSetup, type Options, type Plugin, type Plugins } from "@execmd/plugin-common";
 import hljs from "highlight.js/lib/core";
 import type { IModule } from "@execmd/runtime";
 
@@ -17,7 +17,7 @@ const plugins = [
     javascriptX,
     krokiX
 ];
-plugins.filter((p) => p.setup !== undefined).map((p) => p.setup(bindings));
+pluginSetup(plugins, bindings);
 
 const renderer = {
     code(code: string, infostring: string, escaped: boolean | undefined) {
