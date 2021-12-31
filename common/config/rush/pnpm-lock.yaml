@@ -3886,6 +3886,11 @@ packages:
       detect-newline: 3.1.0
     dev: false
 
+  /jest-dom/4.0.0:
+    resolution: {integrity: sha512-gBxYZlZB1Jgvf2gP2pRfjjUWF8woGBHj/g5rAQgFPB/0K2atGuhVcPO+BItyjWeKg9zM+dokgcMOH01vrWVMFA==}
+    deprecated: '🚨 jest-dom has moved to @testing-library/jest-dom. Please uninstall jest-dom and install @testing-library/jest-dom instead, or use an older version of jest-dom. Learn more about this change here: https://github.com/testing-library/dom-testing-library/issues/260 Thanks! :)'
+    dev: false
+
   /jest-each/27.4.2:
     resolution: {integrity: sha512-53V2MNyW28CTruB3lXaHNk6PkiIFuzdOC9gR3C6j8YE/ACfrPnz+slB0s17AgU1TtxNzLuHyvNlLJ+8QYw9nBg==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -5892,7 +5897,7 @@ packages:
     dev: false
 
   file:projects/core.tgz_274c11851c514cb702df560455ceaf3f:
-    resolution: {integrity: sha512-3Yj57vc5rEM8akyFK4k1cGBbopO4MLv2ERyKi6ZL5FClTSeUCJZgFM08tcyNUHk2QXHgqDZOyfcr0zOrgaONLQ==, tarball: file:projects/core.tgz}
+    resolution: {integrity: sha512-FckzJ6ooU3XvRiggtSLtHdlHakv8Po8+WaFHj5hH8WisVcCSO9HMShgz6CYTofd9UzXJmWuEq3W/I1G1gk/g1g==, tarball: file:projects/core.tgz}
     id: file:projects/core.tgz
     name: '@rush-temp/core'
     version: 0.0.0
@@ -5909,6 +5914,7 @@ packages:
       eslint-plugin-promise: 6.0.0_eslint@8.5.0
       highlight.js: 11.3.1
       jest: 27.4.5_ts-node@10.4.0
+      jest-dom: 4.0.0
       marked: 4.0.8
       pnpm: 6.24.4
       ts-jest: 27.1.2_7d2f554c34b4e21ded0571d465f52193

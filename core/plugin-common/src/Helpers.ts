@@ -39,14 +39,14 @@ export const valueUpdater = (elementID: string): ((content: string | Node) => vo
 
 export const inspectorUpdater = (elementID: string): ((inspector: Inspector) => void) => {
   let last = Date.now()
-  let inspector
+  let inspector: Inspector
 
   const updateDiv = (moment: number, update: (inspector: Inspector) => void) => {
     const element = document.getElementById(elementID)
 
     if (element === null) return false
     else if (last === moment) {
-      if (inspector === undefined) { inspector = new Inspector(element) }
+      if (inspector === undefined) inspector = new Inspector(element)
       update(inspector)
       return true
     } else return true

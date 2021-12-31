@@ -1,18 +1,12 @@
-import hljs from 'highlight.js/lib/core'
-import javascriptHighlighter from 'highlight.js/lib/languages/javascript'
-
 import { createRuntime } from '@execmd/runtime'
 import { setup } from '../MarkedTemplateParser'
 
 import { javascriptX, importMarkup } from '@execmd/plugin-javascript-x'
 import { krokiX } from '@execmd/plugin-kroki-x'
 
-// beforeAll(() => {
-(document.defaultView as any).hljs = hljs
-hljs.registerLanguage('js', javascriptHighlighter)
-
-setup([javascriptX, krokiX], new Map([['hljs', hljs]]))
-// })
+beforeAll(() => {
+  setup([javascriptX, krokiX], new Map())
+})
 
 test('Empty content results in an empty module', () => {
   const content = ''
@@ -42,7 +36,7 @@ test('A non-executable code block is not added to the module', () => {
 
 Some text
 
-\`\`\` js
+\`\`\`
 x = 10
 \`\`\`
 

@@ -1,9 +1,11 @@
 import { marked } from 'marked'
 import { parseInfoString, renderCode, setup as pluginSetup, type Bindings, type Options, type Plugin, type Plugins } from '@execmd/plugin-common'
-import hljs from 'highlight.js/lib/core'
 import type { IModule } from '@execmd/runtime'
 
+let hljs
+
 export const setup = (plugins: Plugins, bindings: Bindings): void => {
+  hljs = bindings.get('hljs')
   pluginSetup(plugins, bindings)
   marked.use({ renderer: renderer(plugins), extensions: [inlineExpression(plugins)] })
 }
@@ -12,7 +14,8 @@ const renderer = (plugins: Plugins) => ({
   code (code: string, infostring: string, escaped: boolean | undefined) {
     const findResponse = find(plugins, infostring)
 
-    if (findResponse === undefined) { return renderCode(hljs, infostring, code) } else {
+    if (findResponse === undefined) return renderCode(hljs, infostring, code)
+    else {
       const [plugin, is] = findResponse
 
       return plugin.render(this.options.nbv_module, code, is, this.options.nbv_render)
