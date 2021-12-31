@@ -441,6 +441,10 @@
       "projectFolder": "core/plugin-common"
     },
     {
+      "packageName": "@execmd/javascript-parser",
+      "projectFolder": "core/javascript-parser"
+    },
+    {
       "packageName": "@execmd/load-resource",
       "projectFolder": "core/load-resource"
     }

@@ -1,6 +1,6 @@
 import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
-import { parse } from "../parser";
+import { parse } from "@execmd/javascript-parser";
 import { valueUpdater, renderCode, type Bindings, type Options, type Plugin } from "@execmd/plugin-common";
 
 interface JavascriptXAssert extends Plugin {

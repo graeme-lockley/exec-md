@@ -1,6 +1,6 @@
 import { type IModule, type Observer, defineVariable } from "@execmd/runtime";
 
-import { parse, type ParseResult } from "../parser";
+import { parse, type ParseResult } from "@execmd/javascript-parser";
 import { valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin } from "@execmd/plugin-common";
 import { importMarkup } from "../core";
 
