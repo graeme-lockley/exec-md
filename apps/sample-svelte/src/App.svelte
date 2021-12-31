@@ -6,11 +6,11 @@
 
 	import XMarkdown from "./XMarkdown.svelte";
 
-	import { javascriptX } from "./plugins/JavascriptX";
-	import { javascriptXAssert } from "./plugins/JavascriptXAssert";
-	import { javascriptXInline } from "./plugins/JavascriptXInline";
-	import { javascriptXView } from "./plugins/JavascriptXView";
-	import { krokiX } from "./plugins/KrokiX";
+	import { javascriptX } from "@execmd/plugin-javascript-x";
+	import { javascriptXAssert } from "@execmd/plugin-javascript-x-assert";
+	import { javascriptXInline } from "@execmd/plugin-javascript-x-inline";
+	import { javascriptXView } from "@execmd/plugin-javascript-x-view";
+	import { krokiX } from "@execmd/plugin-kroki-x";
 
 	import { setup } from "./core/MarkedTemplateParser";
 

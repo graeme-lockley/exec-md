@@ -441,6 +441,26 @@
       "projectFolder": "core/plugin-common"
     },
     {
+      "packageName": "@execmd/plugin-javascript-x",
+      "projectFolder": "core/plugin-javascript-x"
+    },
+    {
+      "packageName": "@execmd/plugin-javascript-x-assert",
+      "projectFolder": "core/plugin-javascript-x-assert"
+    },
+    {
+      "packageName": "@execmd/plugin-javascript-x-inline",
+      "projectFolder": "core/plugin-javascript-x-inline"
+    },
+    {
+      "packageName": "@execmd/plugin-javascript-x-view",
+      "projectFolder": "core/plugin-javascript-x-view"
+    },
+    {
+      "packageName": "@execmd/plugin-kroki-x",
+      "projectFolder": "core/plugin-kroki-x"
+    },
+    {
       "packageName": "@execmd/javascript-parser",
       "projectFolder": "core/javascript-parser"
     },

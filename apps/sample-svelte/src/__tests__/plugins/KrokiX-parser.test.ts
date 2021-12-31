@@ -1,4 +1,4 @@
-import { parse } from "../../plugins/KrokiX";
+import { parse } from "@execmd/plugin-kroki-x";
 
 test("empty string returns ['']", () => {
     expect(parse("")).toEqual(['']);

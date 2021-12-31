@@ -1,8 +1,8 @@
 import { createRuntime } from "@execmd/runtime";
 import { setup } from "../core/MarkedTemplateParser";
 
-import { javascriptX, importMarkup } from "../plugins/JavascriptX";
-import { krokiX } from "../plugins/KrokiX";
+import { javascriptX, importMarkup } from "@execmd/plugin-javascript-x";
+import { krokiX } from "@execmd/plugin-kroki-x";
 
 import hljs from "highlight.js/lib/core";
 import javascript_highlighter from "highlight.js/lib/languages/javascript";

@@ -43,6 +43,11 @@
     "sirv-cli": "^1.0.0",
     "@execmd/runtime": "~1.0.0",
     "@execmd/plugin-common": "~1.0.0",
+    "@execmd/plugin-javascript-x": "~1.0.0",
+    "@execmd/plugin-javascript-x-assert": "~1.0.0",
+    "@execmd/plugin-javascript-x-inline": "~1.0.0",
+    "@execmd/plugin-javascript-x-view": "~1.0.0",
+    "@execmd/plugin-kroki-x": "~1.0.0",
     "@execmd/javascript-parser": "~1.0.0"
   }
 }

@@ -1,4 +1,4 @@
-import { functionFromBody } from "../../plugins/KrokiX";
+import { functionFromBody } from "@execmd/plugin-kroki-x";
 
 test("empty string returns () => ``", () => {
     const value = functionFromBody("");
