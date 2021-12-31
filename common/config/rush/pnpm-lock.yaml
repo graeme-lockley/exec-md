@@ -10,6 +10,7 @@ specifiers:
   '@rollup/plugin-commonjs': ^21.0.1
   '@rollup/plugin-node-resolve': ^13.1.1
   '@rollup/plugin-typescript': ^8.0.0
+  '@rush-temp/core': file:./projects/core.tgz
   '@rush-temp/javascript-parser': file:./projects/javascript-parser.tgz
   '@rush-temp/load-resource': file:./projects/load-resource.tgz
   '@rush-temp/plugin-common': file:./projects/plugin-common.tgz
@@ -59,6 +60,7 @@ dependencies:
   '@rollup/plugin-commonjs': 21.0.1_rollup@2.62.0
   '@rollup/plugin-node-resolve': 13.1.1_rollup@2.62.0
   '@rollup/plugin-typescript': 8.3.0_rollup@2.62.0+tslib@2.3.1
+  '@rush-temp/core': file:projects/core.tgz_274c11851c514cb702df560455ceaf3f
   '@rush-temp/javascript-parser': file:projects/javascript-parser.tgz_274c11851c514cb702df560455ceaf3f
   '@rush-temp/load-resource': file:projects/load-resource.tgz_274c11851c514cb702df560455ceaf3f
   '@rush-temp/plugin-common': file:projects/plugin-common.tgz_274c11851c514cb702df560455ceaf3f
@@ -5889,6 +5891,43 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  file:projects/core.tgz_274c11851c514cb702df560455ceaf3f:
+    resolution: {integrity: sha512-3Yj57vc5rEM8akyFK4k1cGBbopO4MLv2ERyKi6ZL5FClTSeUCJZgFM08tcyNUHk2QXHgqDZOyfcr0zOrgaONLQ==, tarball: file:projects/core.tgz}
+    id: file:projects/core.tgz
+    name: '@rush-temp/core'
+    version: 0.0.0
+    dependencies:
+      '@jest/types': 27.4.2
+      '@types/jest': 27.0.3
+      '@typescript-eslint/eslint-plugin': 5.8.1_3a47348159e115370aa4cba56aba33b6
+      '@typescript-eslint/parser': 5.8.1_eslint@8.5.0+typescript@4.5.4
+      eslint: 8.5.0
+      eslint-config-standard: 16.0.3_4cecef3480376bac71ded249816d1e72
+      eslint-plugin-import: 2.25.3_eslint@8.5.0
+      eslint-plugin-jest: 25.3.2_8e4587ffdbad7ecbf6b0774bd21bf51b
+      eslint-plugin-node: 11.1.0_eslint@8.5.0
+      eslint-plugin-promise: 6.0.0_eslint@8.5.0
+      highlight.js: 11.3.1
+      jest: 27.4.5_ts-node@10.4.0
+      marked: 4.0.8
+      pnpm: 6.24.4
+      ts-jest: 27.1.2_7d2f554c34b4e21ded0571d465f52193
+      ts-node: 10.4.0_bad060d5f9aca5284661d88d739ba15b
+      typescript: 4.5.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-jest
+      - bufferutil
+      - canvas
+      - esbuild
+      - node-notifier
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   file:projects/javascript-parser.tgz_274c11851c514cb702df560455ceaf3f:
     resolution: {integrity: sha512-VTArjNkdTUHyqGlz4Vw8v/YVSS2F3STXLMZQ8wHd/kAaRtrHieStxfDawfR+q2Aky5ztYWvIw/Dw7La7gpKw6g==, tarball: file:projects/javascript-parser.tgz}
     id: file:projects/javascript-parser.tgz
@@ -6211,7 +6250,7 @@ packages:
     dev: false
 
   file:projects/sample-svelte.tgz_ts-node@10.4.0:
-    resolution: {integrity: sha512-dRo55k/eL/CAEKOfHY+juqI4fYEX/MTXDJPNezGbAkDx86y9ws0HGGaSlpvSfmwa1a31cjvpGk9eCUIDD4z0pQ==, tarball: file:projects/sample-svelte.tgz}
+    resolution: {integrity: sha512-uSfU9IGQs+ANCxT2J03F6Y9eYPOJiu51RkhPXnwOMLwCVzSA6pciSUVYLVgDsA13gA+XyDilwF275wJLuKMRZg==, tarball: file:projects/sample-svelte.tgz}
     id: file:projects/sample-svelte.tgz
     name: '@rush-temp/sample-svelte'
     version: 0.0.0

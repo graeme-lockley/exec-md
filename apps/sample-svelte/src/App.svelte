@@ -12,7 +12,7 @@
 	import { javascriptXView } from "@execmd/plugin-javascript-x-view";
 	import { krokiX } from "@execmd/plugin-kroki-x";
 
-	import { setup } from "./core/MarkedTemplateParser";
+	import { setup } from "@execmd/core";
 
 	hljs.registerLanguage("javascript", javascript_highlighter);
 	hljs.registerLanguage("js", javascript_highlighter);

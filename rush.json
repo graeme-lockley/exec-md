@@ -433,6 +433,10 @@
       "projectFolder": "apps/sample-svelte"
     },
     {
+      "packageName": "@execmd/core",
+      "projectFolder": "core/core"
+    },
+    {
       "packageName": "@execmd/runtime",
       "projectFolder": "core/runtime"
     },

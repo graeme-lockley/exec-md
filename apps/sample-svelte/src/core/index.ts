@@ -1,1 +1,0 @@
-export { translateMarkup } from './MarkedTemplateParser'
