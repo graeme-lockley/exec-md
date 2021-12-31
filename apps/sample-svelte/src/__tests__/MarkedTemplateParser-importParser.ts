@@ -1,10 +1,17 @@
 import { createRuntime } from "@execmd/runtime";
-import { importMarkup } from "../core";
+import { setup } from "../core/MarkedTemplateParser";
+
+import { javascriptX, importMarkup } from "../plugins/JavascriptX";
+import { krokiX } from "../plugins/KrokiX";
 
 import hljs from "highlight.js/lib/core";
 import javascript_highlighter from "highlight.js/lib/languages/javascript";
 
-hljs.registerLanguage("js", javascript_highlighter);
+beforeAll(() => {
+    hljs.registerLanguage("js", javascript_highlighter);
+
+    setup([javascriptX, krokiX], new Map([["hljs", hljs]]));
+});
 
 test("Empty content results in an empty module", () => {
     const content = '';

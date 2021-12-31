@@ -1,25 +1,14 @@
 import { marked } from "marked";
-import { parseInfoString, renderCode, setup as pluginSetup, type Options, type Plugin, type Plugins } from "@execmd/plugin-common";
+import { parseInfoString, renderCode, setup as pluginSetup, type Bindings, type Options, type Plugin, type Plugins } from "@execmd/plugin-common";
 import hljs from "highlight.js/lib/core";
 import type { IModule } from "@execmd/runtime";
 
-import { javascriptX } from "../plugins/JavascriptX";
-import { javascriptXAssert } from "../plugins/JavascriptXAssert";
-import { javascriptXInline } from "../plugins/JavascriptXInline";
-import { javascriptXView } from "../plugins/JavascriptXView";
-import { krokiX } from "../plugins/KrokiX";
+export const setup = (plugins: Plugins, bindings: Bindings): void => {
+    pluginSetup(plugins, bindings);
+    marked.use({ renderer: renderer(plugins), extensions: [inlineExpression(plugins)] });
+}
 
-const bindings = new Map([["hljs", hljs]]);
-const plugins = [
-    javascriptXAssert,
-    javascriptXView,
-    javascriptXInline,
-    javascriptX,
-    krokiX
-];
-pluginSetup(plugins, bindings);
-
-const renderer = {
+const renderer = (plugins: Plugins) => ({
     code(code: string, infostring: string, escaped: boolean | undefined) {
         const findResponse = find(plugins, infostring);
 
@@ -31,9 +20,9 @@ const renderer = {
             return plugin.render(this.options.nbv_module, code, is, this.options.nbv_render);
         }
     }
-};
+});
 
-const inlineExpression = {
+const inlineExpression = (plugins: Plugins) => ({
     name: "expression",
     level: "inline",
     start(src: string) {
@@ -73,35 +62,35 @@ const inlineExpression = {
         return undefined;
     },
     renderer(token: any) {
-        return javascriptXInline.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render);
-    }
-};
+        const findResponse = find(plugins, 'js inline');
 
-marked.use({ renderer, extensions: [inlineExpression] });
+        if (findResponse === undefined)
+            return '[Error: js inline: no plugin configured]';
+        else {
+            const [plugin, is] = findResponse;
+
+            return plugin.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render);
+        }
+    }
+});
+
 
 export const translateMarkup = (text: string, module: IModule): string =>
     marked.parse(text, { nbv_module: module, nbv_render: true });
 
-export const importMarkup = (text: string, module: IModule): void =>
-    marked.parse(text, { nbv_module: module, nbv_render: false });
-
-function find(
-    plugins: Plugins,
-    infostring: string
-): [Plugin, Options] | undefined {
-    return findMap(plugins, (plugin: Plugin) => {
+const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefined =>
+    findMap(plugins, (plugin: Plugin) => {
         const match = infostring.match(plugin.pattern);
 
-        if (match == null) return undefined;
-        else
-            return [
+        return (match == null)
+            ? undefined
+            : [
                 plugin,
                 parseInfoString(
                     plugin.name + " " + infostring.slice(match[0].length)
                 ),
             ];
     });
-}
 
 function findMap<X, Y>(
     items: Array<X>,
