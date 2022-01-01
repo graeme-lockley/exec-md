@@ -217,8 +217,8 @@ topDownBlockLayout = (startX, startY, blockWidth, blockHeight, padding, columnDe
 
     const numberOfColumns = Math.floor((numberOfBlocks + columnDepth - 1) / columnDepth);
     const numberOfRows = Math.min(numberOfBlocks, columnDepth);
-    const width = numberOfColumns * (blockWidth + padding) - padding;
-    const height = numberOfRows * (blockHeight + padding) - padding;
+    const width = Math.max(padding, numberOfColumns * (blockWidth + padding) - padding);
+    const height = Math.max(padding, numberOfRows * (blockHeight + padding) - padding);
 
     return {
         numberOfColumns,
@@ -248,8 +248,8 @@ leftRightBlockLayout = (startX, startY, blockWidth, blockHeight, padding, rowWid
 
     const numberOfColumns = Math.min(numberOfBlocks, rowWidth);
     const numberOfRows = Math.floor((numberOfBlocks + rowWidth - 1) / rowWidth);
-    const width = numberOfColumns * (blockWidth + padding) - padding;
-    const height = numberOfRows * (blockHeight + padding) - padding;
+    const width = Math.max(padding, numberOfColumns * (blockWidth + padding) - padding);
+    const height = Math.max(padding, numberOfRows * (blockHeight + padding) - padding);
 
     return {
         numberOfColumns,
