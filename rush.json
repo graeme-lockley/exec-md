@@ -433,6 +433,10 @@
       "projectFolder": "apps/sample-svelte"
     },
     {
+      "packageName": "@execmd/code-editor",
+      "projectFolder": "apps/code-editor"
+    },
+    {
       "packageName": "@execmd/core",
       "projectFolder": "core/core"
     },

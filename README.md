@@ -1,6 +1,6 @@
 # execmd
 
-A monoreport containing a number of projects supporting in-browser markdown execution.
+A monoreport containing a number of projects supporting in-browser markdown execution of code placed in fenced code blocks.
 
 ## Building
 
@@ -17,3 +17,7 @@ rush build
 ```
 
 to run eslint, all unit tests and bundle each project
+
+## Credit
+
+This repo makes extensive use of [Observable's](https://github.com/observablehq) libraries and it would be remiss of me not to mention the excellent work that the Observable team are doing.
