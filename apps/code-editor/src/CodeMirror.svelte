@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import CodeMirror from "codemirror/lib/codemirror";
+    import CodeMirror from "codemirror/lib/codemirror.js";
 
     export let sourceURL: string;
     export let content: string = "";
@@ -13,7 +13,7 @@
         cm = CodeMirror(element, {
             lineNumbers: true,
             content,
-            mode: "markdown",
+            mode: "markdown"
         });
 
         cm.on("change", (doc: any, change: any) => {
@@ -38,3 +38,9 @@
 </script>
 
 <div id="code-mirror" />
+
+<style>
+    :global(.CodeMirror) {
+        height: 100%;
+    }
+</style>

@@ -4,7 +4,7 @@
 	import plaintextHighlighter from "highlight.js/lib/languages/plaintext";
 
 	import "highlight.js/styles/base16/papercolor-light.css";
-	import "codemirror/lib/codemirror.css";
+	// import "codemirror/lib/codemirror.css";
 	import "codemirror/mode/markdown/markdown.js";
 
 	import { standardSetup } from "@execmd/core";
@@ -52,11 +52,47 @@
 	disabled={content === editorContent}
 	on:click={() => {
 		content = editorContent;
-	}}>Process Markdown</button
+	}}
 >
+	Process Markdown
+</button>
 
-<CodeMirror
-	sourceURL={examples[selectedID].resource}
-	bind:content={editorContent}
-/>
-<XMarkdown {content} />
+<div class="wrapper">
+	<div id="one">
+		<CodeMirror
+			sourceURL={examples[selectedID].resource}
+			bind:content={editorContent}
+		/>
+	</div>
+	<div id="two">
+		<XMarkdown {content} />
+	</div>
+</div>
+
+<style>
+	.wrapper {
+		overflow: hidden;
+	}
+
+	.wrapper div {
+		padding: 10px;
+		height: auto;
+	}
+
+	#one {
+		background-color: gray;
+		float: left;
+		margin-right: 20px;
+		width: 50%;
+		height: auto;
+	}
+
+	#two {
+		background-color: white;
+		overflow: hidden;
+		margin: 10px;
+		border: 2px dashed #ccc;
+		min-height: 170px;
+		height: auto;
+	}
+</style>
