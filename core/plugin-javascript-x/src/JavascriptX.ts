@@ -62,13 +62,11 @@ export const javascriptX: JavascriptX = {
         const observerID = id + '-observer'
         const codeID = id + '-code'
 
-        const renderer: Renderer =
-                    () => renderCode(this.hljs, 'javascript', body)
+        const renderer: Renderer = () => renderCode(this.hljs, 'javascript', body)
 
-        const variableObserver =
-                    observer(observerID, codeID, pr.urn, options.has('hide'), options.has('pin'), renderer)
+        const variableObserver = observer(observerID, codeID, pr.urn, options.has('hide'), options.has('pin'), renderer)
 
-        const aliases = pr.names.map(({ name, alias }) => alias)
+        const aliases = pr.names.map(({ alias }) => alias)
 
         defineVariable(module, variableObserver, undefined, aliases, `({${aliases.join(', ')}})`)
 
