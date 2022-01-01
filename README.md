@@ -16,4 +16,4 @@ to download and install all dependencies and then
 rush build
 ```
 
-to run eslint against all projects, run all of the unit tests within each project and bundle each project
+to run eslint, all unit tests and bundle each project
