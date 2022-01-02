@@ -28,11 +28,11 @@ const titleFromName = (name) =>
 
 const nameToDir = (dir, name) => {
     const fullPath = Path.join(dir, name)
-
     const title = titleFromFile(fullPath) || titleFromName(name);
 
     return {
-        label: title,
+        type: "leaf",
+        name: title,
         resource: fullPath.slice(publicDir.length)
     }
 };
@@ -43,18 +43,14 @@ const readNotebooksDir = (dir) => {
     const directories = entries
         .filter(e => e.isDirectory())
         .map(e => ({
-            node: titleFromName(e.name),
+            type: "node",
+            name: titleFromName(e.name),
             children: readNotebooksDir(Path.join(dir, e.name))
         }))
         .filter(n => n.children.length > 0);
 
     return [...entries.filter(e => e.isFile() && /\.md$/.test(e.name)).map(e => nameToDir(dir, e.name)), ...directories]
-        .sort((a, b) => {
-            const aName = a.label || a.node;
-            const bName = b.label || b.node;
-
-            return bName < aName ? 1 : bName > aName ? -1 : 0
-        });
+        .sort((a, b) => b.name < a.name ? 1 : b.name > a.name ? -1 : 0);
 };
 
 FS.writeFileSync(Path.join(publicDir, 'directory.json'), JSON.stringify(readNotebooksDir(notebooksDir), null, 2), 'utf-8')

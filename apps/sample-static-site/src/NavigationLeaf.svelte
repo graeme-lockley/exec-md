@@ -7,10 +7,15 @@
 
     export let leaf: INavigationLeaf;
 
-    export let selection: INavigationLeaf;
+    export let selection: INavigationLeaf | undefined;
 </script>
 
-<li class="list-group-item {leaf == selection ? "active" : ""}" on:click={() => dispatch('leaf', {leaf})}>{leaf.label}</li>
+<li
+    class="list-group-item {leaf == selection ? 'active' : ''}"
+    on:click={() => dispatch("leaf", { leaf })}
+>
+    {leaf.name}
+</li>
 
 <style>
     li.list-group-item {
