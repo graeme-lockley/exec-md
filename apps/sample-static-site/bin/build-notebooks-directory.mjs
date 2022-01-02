@@ -24,7 +24,7 @@ const titleFromFile = (fileName) => {
 };
 
 const titleFromName = (name) =>
-    name.replace(/.md$/, '').replace(/-/g, ' ').split(' ').map(s => s[0].toUpperCase() + s.slice(1)).join(' ');
+    name.replace(/.md$/, '').split('-').map(s => s[0].toUpperCase() + s.slice(1)).join(' ');
 
 const nameToDir = (dir, name) => {
     const fullPath = Path.join(dir, name)
@@ -49,7 +49,11 @@ const readNotebooksDir = (dir) => {
         }))
         .filter(n => n.children.length > 0);
 
-    return [...entries.filter(e => e.isFile() && /\.md$/.test(e.name)).map(e => nameToDir(dir, e.name)), ...directories]
+    const notebooks = entries
+        .filter(e => e.isFile() && /\.md$/.test(e.name))
+        .map(e => nameToDir(dir, e.name));
+
+    return [...notebooks, ...directories]
         .sort((a, b) => b.name < a.name ? 1 : b.name > a.name ? -1 : 0);
 };
 
