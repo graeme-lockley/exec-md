@@ -1,0 +1,38 @@
+[
+  {
+    "text": "Basic Testing Notebook",
+    "resource": "/notebooks/basic.md"
+  },
+  {
+    "text": "Blocks in Blocks ",
+    "resource": "/notebooks/blocks-in-blocks.md"
+  },
+  {
+    "text": "D3 Scatterplot",
+    "resource": "/notebooks/d3-scatterplot.md"
+  },
+  {
+    "text": "Kroki Diagrams",
+    "resource": "/notebooks/kroki-diagrams.md"
+  },
+  {
+    "text": "Nested Import",
+    "resource": "/notebooks/nested-import.md"
+  },
+  {
+    "text": "Platform Components",
+    "resource": "/notebooks/platform-components.md"
+  },
+  {
+    "text": "Playing Around With SVG",
+    "resource": "/notebooks/playing-with-svg.md"
+  },
+  {
+    "text": "String Calculator Kata",
+    "resource": "/notebooks/sck.md"
+  },
+  {
+    "text": "Simple Reactive Components",
+    "resource": "/notebooks/simple.md"
+  }
+]
