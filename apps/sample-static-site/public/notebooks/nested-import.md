@@ -57,5 +57,5 @@ Finally let's show off a more complex example - pulling in the platform view whe
 ```
 
 ``` js x | hide
-import { platformInto } from "/notebooks/platform-components.md"
+import { platformInto } from "/notebooks/common-components/platform-components.md"
 ```

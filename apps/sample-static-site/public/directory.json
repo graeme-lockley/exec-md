@@ -1,38 +1,43 @@
 [
   {
-    "text": "Basic Testing Notebook",
+    "label": "Basic Testing Notebook",
     "resource": "/notebooks/basic.md"
   },
   {
-    "text": "Blocks in Blocks ",
+    "label": "Blocks in Blocks ",
     "resource": "/notebooks/blocks-in-blocks.md"
   },
   {
-    "text": "D3 Scatterplot",
+    "node": "Common Components",
+    "children": [
+      {
+        "label": "Platform Components",
+        "resource": "/notebooks/common-components/platform-components.md"
+      }
+    ]
+  },
+  {
+    "label": "D3 Scatterplot",
     "resource": "/notebooks/d3-scatterplot.md"
   },
   {
-    "text": "Kroki Diagrams",
+    "label": "Kroki Diagrams",
     "resource": "/notebooks/kroki-diagrams.md"
   },
   {
-    "text": "Nested Import",
+    "label": "Nested Import",
     "resource": "/notebooks/nested-import.md"
   },
   {
-    "text": "Platform Components",
-    "resource": "/notebooks/platform-components.md"
-  },
-  {
-    "text": "Playing Around With SVG",
+    "label": "Playing Around With SVG",
     "resource": "/notebooks/playing-with-svg.md"
   },
   {
-    "text": "String Calculator Kata",
-    "resource": "/notebooks/sck.md"
+    "label": "Simple Reactive Components",
+    "resource": "/notebooks/simple.md"
   },
   {
-    "text": "Simple Reactive Components",
-    "resource": "/notebooks/simple.md"
+    "label": "String Calculator Kata",
+    "resource": "/notebooks/sck.md"
   }
 ]

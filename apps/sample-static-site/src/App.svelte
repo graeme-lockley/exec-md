@@ -9,7 +9,7 @@
 	import Navigation from "./Navigation.svelte";
 	import XMarkdown from "./XMarkdown.svelte";
 
-	import type { Dir } from "./NavigationEvents";
+	import type { INavigationLeaf } from "./NavigationEvents";
 
 	hljs.registerLanguage("javascript", javascriptHighlighter);
 	hljs.registerLanguage("js", javascriptHighlighter);
@@ -17,11 +17,10 @@
 
 	standardSetup(hljs);
 
-	let sourceURL: string;
+	let selection: INavigationLeaf
 
-	const selectDir = (dir: Dir | undefined) => {
-		sourceURL =
-			dir === undefined ? undefined : dir.resource;
+	const selectDir = (dir: INavigationLeaf | undefined) => {
+		selection = dir
 	};
 </script>
 
@@ -29,15 +28,16 @@
 	<div class="row">
 		<div class="col-sm-2">
 			<Navigation
-				on:navigation={(event) => {
-					selectDir(event.detail.dir);
+				on:leaf={(event) => {
+					selection = event.detail.leaf;
 				}}
+				{selection}
 			/>
 		</div>
 
 		<div class="col-sm-10">
-			{#if sourceURL !== undefined}
-				<XMarkdown {sourceURL} />
+			{#if selection !== undefined}
+				<XMarkdown sourceURL={selection.resource}/>
 			{/if}
 		</div>
 	</div>

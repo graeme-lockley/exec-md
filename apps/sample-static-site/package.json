@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm test && pnpm package",
-    "package": "rollup -c 2>&1",
-    "dev": "rollup -c -w",
+    "package": "bin/build-notebooks-directory.mjs && rollup -c 2>&1",
+    "dev": "bin/build-notebooks-directory.mjs && rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "echo Success",
