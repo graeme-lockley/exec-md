@@ -1,5 +1,5 @@
 {
-  "name": "@execmd/code-editor",
+  "name": "@execmd/sample-code-editor",
   "version": "1.0.0",
   "description": "Split screen code editor allowing code changes to immediately show",
   "private": true,
