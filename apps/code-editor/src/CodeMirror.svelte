@@ -13,7 +13,8 @@
         cm = CodeMirror(element, {
             lineNumbers: true,
             content,
-            mode: "markdown"
+            mode: "markdown",
+            lineWrapping: true
         });
 
         cm.on("change", (doc: any, change: any) => {
