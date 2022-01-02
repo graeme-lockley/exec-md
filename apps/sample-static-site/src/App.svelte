@@ -18,10 +18,6 @@
 	standardSetup(hljs);
 
 	let selection: INavigationLeaf
-
-	const selectDir = (dir: INavigationLeaf | undefined) => {
-		selection = dir
-	};
 </script>
 
 <div class="container-fluid">

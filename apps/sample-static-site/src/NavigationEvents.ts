@@ -2,9 +2,8 @@ export interface LeafEvent {
     leaf: INavigationLeaf;
 }
 
-export type INavigationRoot = Array<INavigationNode>;
-
-export type INavigationItem = INavigationLeaf | INavigationNode;
+export type INavigationItem =
+    INavigationLeaf | INavigationNode;
 
 export interface INavigationLeaf {
     name: string;
@@ -12,6 +11,6 @@ export interface INavigationLeaf {
 }
 
 export interface INavigationNode {
-    node : string;
+    node: string;
     children: Array<INavigationItem>;
 }

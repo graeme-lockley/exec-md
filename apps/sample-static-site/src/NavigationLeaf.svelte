@@ -10,7 +10,6 @@
     export let selection: INavigationLeaf;
 </script>
 
-<!-- svelte-ignore a11y-invalid-attribute -->
 <li class="list-group-item {leaf == selection ? "active" : ""}" on:click={() => dispatch('leaf', {leaf})}>{leaf.label}</li>
 
 <style>
