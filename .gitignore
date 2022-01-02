@@ -69,3 +69,4 @@ common/autoinstallers/*/.npmrc
 .heft
 
 **/public/build/*
+apps/sample-static-site/public/directory.json-
