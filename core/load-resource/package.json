@@ -1,5 +1,5 @@
 {
-    "name": "@execmd/load-resource",
+    "name": "@exec-md/load-resource",
     "version": "1.0.0",
     "description": "Loads resources using Observable's AbstractFile",
     "main": "dist/index.js",

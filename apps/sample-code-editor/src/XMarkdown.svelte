@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { translateMarkup } from "@execmd/core";
-    import { type IModule, type IRuntime, createRuntime } from "@execmd/runtime";
+    import { translateMarkup } from "@exec-md/core";
+    import { type IModule, type IRuntime, createRuntime } from "@exec-md/runtime";
 
     let runtime: IRuntime | undefined = undefined;
     let module: IModule = undefined;

@@ -1,5 +1,5 @@
 {
-    "name": "@execmd/plugin-javascript-x-view",
+    "name": "@exec-md/plugin-javascript-x-view",
     "version": "1.0.0",
     "description": "Executable JavaScript code blocks rendered using Obeservable's view",
     "main": "dist/index.js",
@@ -42,8 +42,8 @@
         "typescript": "^4.5.4"
     },
     "dependencies": {
-        "@execmd/runtime": "^1.0.0",
-        "@execmd/plugin-common": "^1.0.0",
-        "@execmd/javascript-parser": "^1.0.0"
+        "@exec-md/runtime": "^1.0.0",
+        "@exec-md/plugin-common": "^1.0.0",
+        "@exec-md/javascript-parser": "^1.0.0"
     }
 }

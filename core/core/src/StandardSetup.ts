@@ -1,9 +1,9 @@
-import { type Bindings, type Plugins } from '@execmd/plugin-common'
-import { javascriptX } from '@execmd/plugin-javascript-x'
-import { javascriptXAssert } from '@execmd/plugin-javascript-x-assert'
-import { javascriptXInline } from '@execmd/plugin-javascript-x-inline'
-import { javascriptXView } from '@execmd/plugin-javascript-x-view'
-import { krokiX } from '@execmd/plugin-kroki-x'
+import { type Bindings, type Plugins } from '@exec-md/plugin-common'
+import { javascriptX } from '@exec-md/plugin-javascript-x'
+import { javascriptXAssert } from '@exec-md/plugin-javascript-x-assert'
+import { javascriptXInline } from '@exec-md/plugin-javascript-x-inline'
+import { javascriptXView } from '@exec-md/plugin-javascript-x-view'
+import { krokiX } from '@exec-md/plugin-kroki-x'
 
 export const standardSetup = (hljs: any): { plugins: Plugins, bindings: Bindings } => {
   return {

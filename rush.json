@@ -272,7 +272,7 @@
      * to retrieve the latest activity for the remote master branch.
      */
     "url": "https://github.com/graeme-lockley/execmd",
-    
+
     /**
      * The default branch name. This tells "rush change" which remote branch to compare against.
      * The default value is "master"
@@ -431,67 +431,67 @@
     //   "reviewCategory": "tools"
     // }
     {
-      "packageName": "@execmd/sample-svelte",
+      "packageName": "@exec-md/sample-svelte",
       "projectFolder": "apps/sample-svelte",
       "shouldPublish": false
     },
     {
-      "packageName": "@execmd/sample-code-editor",
+      "packageName": "@exec-md/sample-code-editor",
       "projectFolder": "apps/sample-code-editor",
       "shouldPublish": false
     },
     {
-      "packageName": "@execmd/sample-static-site",
+      "packageName": "@exec-md/sample-static-site",
       "projectFolder": "apps/sample-static-site",
       "shouldPublish": false
     },
     {
-      "packageName": "@execmd/core",
+      "packageName": "@exec-md/core",
       "projectFolder": "core/core",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/runtime",
+      "packageName": "@exec-md/runtime",
       "projectFolder": "core/runtime",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-common",
+      "packageName": "@exec-md/plugin-common",
       "projectFolder": "core/plugin-common",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-javascript-x",
+      "packageName": "@exec-md/plugin-javascript-x",
       "projectFolder": "core/plugin-javascript-x",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-javascript-x-assert",
+      "packageName": "@exec-md/plugin-javascript-x-assert",
       "projectFolder": "core/plugin-javascript-x-assert",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-javascript-x-inline",
+      "packageName": "@exec-md/plugin-javascript-x-inline",
       "projectFolder": "core/plugin-javascript-x-inline",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-javascript-x-view",
+      "packageName": "@exec-md/plugin-javascript-x-view",
       "projectFolder": "core/plugin-javascript-x-view",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/plugin-kroki-x",
+      "packageName": "@exec-md/plugin-kroki-x",
       "projectFolder": "core/plugin-kroki-x",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/javascript-parser",
+      "packageName": "@exec-md/javascript-parser",
       "projectFolder": "core/javascript-parser",
       "versionPolicyName": "VERSION-POLICY"
     },
     {
-      "packageName": "@execmd/load-resource",
+      "packageName": "@exec-md/load-resource",
       "projectFolder": "core/load-resource",
       "versionPolicyName": "VERSION-POLICY"
     }

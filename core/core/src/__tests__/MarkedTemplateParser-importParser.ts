@@ -1,8 +1,8 @@
-import { createRuntime } from '@execmd/runtime'
+import { createRuntime } from '@exec-md/runtime'
 import { setup } from '../MarkedTemplateParser'
 
-import { javascriptX, importMarkup } from '@execmd/plugin-javascript-x'
-import { krokiX } from '@execmd/plugin-kroki-x'
+import { javascriptX, importMarkup } from '@exec-md/plugin-javascript-x'
+import { krokiX } from '@exec-md/plugin-kroki-x'
 
 beforeAll(() => {
   setup([javascriptX, krokiX], new Map())

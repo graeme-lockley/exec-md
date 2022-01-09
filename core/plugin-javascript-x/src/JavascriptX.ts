@@ -1,8 +1,8 @@
 import { marked } from 'marked'
-import { type IModule, type Observer, defineVariable } from '@execmd/runtime'
+import { type IModule, type Observer, defineVariable } from '@exec-md/runtime'
 
-import { parse, type ParseResult } from '@execmd/javascript-parser'
-import { valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin } from '@execmd/plugin-common'
+import { parse, type ParseResult } from '@exec-md/javascript-parser'
+import { valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin } from '@exec-md/plugin-common'
 
 interface JavascriptX extends Plugin {
     hljs: any | undefined;

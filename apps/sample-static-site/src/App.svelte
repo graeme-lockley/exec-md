@@ -4,7 +4,7 @@
 	import plaintextHighlighter from "highlight.js/lib/languages/plaintext";
 
 	import "highlight.js/styles/base16/papercolor-light.css";
-	import { standardSetup } from "@execmd/core";
+	import { standardSetup } from "@exec-md/core";
 
 	import Navigation from "./Navigation.svelte";
 	import XMarkdown from "./XMarkdown.svelte";

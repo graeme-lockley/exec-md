@@ -7,7 +7,7 @@
 	// import "codemirror/lib/codemirror.css";
 	import "codemirror/mode/markdown/markdown.js";
 
-	import { standardSetup } from "@execmd/core";
+	import { standardSetup } from "@exec-md/core";
 
 	import CodeMirror from "./CodeMirror.svelte";
 	import XMarkdown from "./XMarkdown.svelte";

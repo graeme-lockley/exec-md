@@ -1,5 +1,5 @@
 {
-    "name": "@execmd/javascript-parser",
+    "name": "@exec-md/javascript-parser",
     "version": "1.0.0",
     "description": "Parsers JavaScript to determine external dependencies",
     "main": "dist/index.js",

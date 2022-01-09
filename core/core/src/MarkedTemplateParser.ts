@@ -1,6 +1,6 @@
 import { marked } from 'marked'
-import { parseInfoString, renderCode, setup as pluginSetup, type Bindings, type Options, type Plugin, type Plugins } from '@execmd/plugin-common'
-import type { IModule } from '@execmd/runtime'
+import { parseInfoString, renderCode, setup as pluginSetup, type Bindings, type Options, type Plugin, type Plugins } from '@exec-md/plugin-common'
+import type { IModule } from '@exec-md/runtime'
 
 import { standardSetup as ss } from './StandardSetup'
 
