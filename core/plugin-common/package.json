@@ -1,7 +1,7 @@
 {
     "name": "@execmd/plugin-common",
     "version": "1.0.0",
-    "description": "Common interfaces, state and behaviour used for developing plugins",
+    "description": "Common interfaces, state and behaviour to develop plugins",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -14,6 +14,16 @@
         "package": "tsc",
         "build": "pnpm lint && pnpm test && pnpm package"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/graeme-lockley/execmd/tree/main/core/plugin-common"
+    },
+    "keywords": [
+        "javascript",
+        "execmd"
+    ],
+    "author": "Graeme Lockley (graeme.lockley@gmail.com)",
+    "license": "MIT",
     "devDependencies": {
         "@jest/types": "~27.4.2",
         "@types/jest": "~27.0.3",

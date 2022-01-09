@@ -1,7 +1,7 @@
 {
     "name": "@execmd/plugin-javascript-x-view",
     "version": "1.0.0",
-    "description": "Supports executable javascript code blocks rendered using Obeservable's view",
+    "description": "Executable JavaScript code blocks rendered using Obeservable's view",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -14,6 +14,16 @@
         "package": "tsc",
         "build": "pnpm lint && pnpm test && pnpm package"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/graeme-lockley/execmd/tree/main/core/plugin-javascript-x-view"
+    },
+    "keywords": [
+        "javascript",
+        "execmd"
+    ],
+    "author": "Graeme Lockley (graeme.lockley@gmail.com)",
+    "license": "MIT",
     "devDependencies": {
         "@jest/types": "~27.4.2",
         "@types/jest": "~27.0.3",

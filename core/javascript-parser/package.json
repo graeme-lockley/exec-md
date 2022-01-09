@@ -1,7 +1,7 @@
 {
     "name": "@execmd/javascript-parser",
     "version": "1.0.0",
-    "description": "Parsers Javascript to determine the external dependencies",
+    "description": "Parsers JavaScript to determine external dependencies",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
     "files": [
@@ -14,6 +14,16 @@
         "package": "tsc",
         "build": "pnpm lint && pnpm test && pnpm package"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/graeme-lockley/execmd/tree/main/core/javascript-parser"
+    },
+    "keywords": [
+        "javascript",
+        "execmd"
+    ],
+    "author": "Graeme Lockley (graeme.lockley@gmail.com)",
+    "license": "MIT",
     "devDependencies": {
         "@jest/types": "~27.4.2",
         "@types/jest": "~27.0.3",
