@@ -34,7 +34,7 @@
   //    * in the current branch.  When bumping versions, Rush uses this to determine the next version.
   //    * (The "version" field in package.json is NOT considered.)
   //    */
-    "version": "1.0.0",
+    "version": "1.0.1-0",
   
   //   /**
   //    * (Required) The type of bump that will be performed when publishing the next release.
@@ -43,25 +43,6 @@
   //    *
   //    * Valid values are: "prerelease", "release", "minor", "patch", "major"
   //    */
-    "nextBump": "prerelease",
-  
-  //   /**
-  //    * (Optional) If specified, all packages in the set share a common CHANGELOG.md file.
-  //    * This file is stored with the specified "main" project, which must be a member of the set.
-  //    *
-  //    * If this field is omitted, then a separate CHANGELOG.md file will be maintained for each
-  //    * package in the set.
-  //    */
-  //   "mainProject": "my-app",
-  // 
-  //   /**
-  //    * (Optional) If enabled, the "rush change" command will prompt the user for their email address
-  //    * and include it in the JSON change files.  If an organization maintains multiple repos, tracking
-  //    * this contact information may be useful for a service that automatically upgrades packages and
-  //    * needs to notify engineers whose change may be responsible for a downstream build break.  It might
-  //    * also be useful for crediting contributors.  Rush itself does not do anything with the collected
-  //    * email addresses.  The default value is "false".
-  //    */
-      "includeEmailInChangeFile": false
+    "nextBump": "prerelease"
   }
 ]

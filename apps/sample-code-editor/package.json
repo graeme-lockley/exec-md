@@ -38,8 +38,8 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@exec-md/core": "^1.0.0",
-    "@exec-md/runtime": "^1.0.0",
+    "@exec-md/core": "^1.0.1-0",
+    "@exec-md/runtime": "^1.0.1-0",
     "highlight.js": "^11.3.1",
     "marked": "^4.0.6",
     "sirv-cli": "^1.0.0",
