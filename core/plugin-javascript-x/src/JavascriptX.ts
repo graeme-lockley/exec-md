@@ -1,11 +1,11 @@
 import { marked } from 'marked'
 import { type IModule, type Observer, defineVariable } from '@exec-md/runtime'
 
-import { parse, type ParseResult } from '@exec-md/javascript-parser'
+import { parse, type ImportStatement, type ParseResult } from '@exec-md/javascript-parser'
 import { valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin } from '@exec-md/plugin-common'
 
 interface JavascriptX extends Plugin {
-    hljs: any | undefined;
+  hljs: any | undefined;
 }
 
 type Renderer = () => string;
@@ -32,12 +32,12 @@ export const javascriptX: JavascriptX = {
         const codeID = id + '-code'
 
         const renderer: Renderer =
-                    () => renderCode(this.hljs, 'javascript', body)
+          () => renderCode(this.hljs, 'javascript', body)
 
         const name = pr.type === 'assignment' ? pr.name : undefined
 
         const variableObserver =
-                    observer(observerID, codeID, name, options.has('hide'), options.has('pin'), renderer)
+          observer(observerID, codeID, name, options.has('hide'), options.has('pin'), renderer)
 
         if (pr.type === 'assignment') { defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body) } else {
           module.variable(variableObserver).define(name, [], () => {
@@ -50,12 +50,7 @@ export const javascriptX: JavascriptX = {
 
       return ''
     } else {
-      fetch(pr.urn).then((r) => r.text()).then((t) => {
-        const newModule = module._runtime.module()
-        importMarkup(t, newModule)
-
-        pr.names.forEach(({ name, alias }) => module.variable().import(name, alias, newModule))
-      }).catch(e => console.log(e))
+      performImport(module, pr)
 
       if (render) {
         const id = `js-x-${idCount++}`
@@ -74,6 +69,30 @@ export const javascriptX: JavascriptX = {
       } else { return '' }
     }
   }
+}
+
+export const performImport = (module: IModule, pr: ImportStatement) => {
+  const neverResolves = new Promise((resolve, reject) => {
+  })
+
+  const variables = new Map()
+  pr.names.forEach(({ name, alias }) => {
+    const v = module.variable()
+
+    variables.set(alias, v)
+
+    v.define(alias, [], neverResolves)
+  })
+
+  fetch(pr.urn).then((r) => r.text()).then((t) => {
+    const newModule = module._runtime.module()
+    importMarkup(t, newModule)
+
+    pr.names.forEach(({ name, alias }) => {
+      variables.get(alias).delete()
+      module.variable().import(name, alias, newModule)
+    })
+  }).catch(e => console.log(e))
 }
 
 const observer = (inspectorElementID: string, codeElementID: string, name: string | undefined, hide: boolean, pin: boolean, renderer: Renderer): Observer => {
