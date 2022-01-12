@@ -1,9 +1,9 @@
-import { performImport } from "../JavascriptX"
-import { createRuntime } from "@exec-md/runtime"
+import { performImport } from '../JavascriptX'
+import { createRuntime } from '@exec-md/runtime'
 
 describe('import', () => {
   test('variable defined prior to import', async () => {
-    let whenDoneResolve: any = undefined
+    let whenDoneResolve: any
 
     const validFetch = (url: string): Promise<any> =>
       new Promise((resolve, reject) => {
@@ -16,21 +16,20 @@ describe('import', () => {
     const module = runtime.module()
 
     performImport(module, {
-      type: "import",
+      type: 'import',
       names: [{ name: 'x', alias: 'y' }],
       urn: 'http://hello.world'
     })
 
-    expect(module.value("y")).not.toBeUndefined()
+    expect(module.value('y')).not.toBeUndefined()
 
     whenDoneResolve({
       ok: true,
-      text: () => "``` js x\nx = 10;\n```"
+      text: () => '``` js x\nx = 10;\n```'
     })
 
-    expect(module.value("y")).not.toBeUndefined()
+    expect(module.value('y')).not.toBeUndefined()
 
     runtime.dispose()
   })
 })
-
