@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@exec-md/plugin-javascript-x",
+      "comment": "Fix an issue where import variables were undefined prior to fetch completing",
+      "type": "none"
+    }
+  ],
+  "packageName": "@exec-md/plugin-javascript-x"
+}
