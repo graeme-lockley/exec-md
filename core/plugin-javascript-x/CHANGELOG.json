@@ -1,0 +1,17 @@
+{
+  "name": "@exec-md/plugin-javascript-x",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@exec-md/plugin-javascript-x_v1.0.1",
+      "date": "Wed, 12 Jan 2022 05:03:59 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix an issue where import variables were undefined prior to fetch completing"
+          }
+        ]
+      }
+    }
+  ]
+}
