@@ -13,12 +13,12 @@ export interface AssignmentStatement {
     body: string;
 }
 
-export interface ExceptionStatemnt {
+export interface ExceptionStatement {
     type: 'exception';
     exception: any;
 }
 
-export type ParseResult = AssignmentStatement | ImportStatement | ExceptionStatemnt;
+export type ParseResult = AssignmentStatement | ImportStatement | ExceptionStatement;
 
 export const parse = (code: string): ParseResult => {
   try {
