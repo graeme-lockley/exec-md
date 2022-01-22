@@ -80,7 +80,7 @@ const inlineExpression = (plugins: Plugins) => ({
     if (findResponse === undefined) { return '[Error: js inline: no plugin configured]' } else {
       const [plugin] = findResponse
 
-      return plugin.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render, this.options.nbv_modules)
+      return plugin.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render, this.parser.options.nbv_modules)
     }
   }
 })
