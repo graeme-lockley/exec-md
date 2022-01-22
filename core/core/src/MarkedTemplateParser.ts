@@ -6,6 +6,9 @@ import { standardSetup as ss } from './StandardSetup'
 
 let hljs
 
+let globalPlugins: Plugins = []
+let globalBindings: Bindings = new Map()
+
 export const standardSetup = (hljs: any): void => {
   const settings = ss(hljs)
 
@@ -15,6 +18,8 @@ export const standardSetup = (hljs: any): void => {
 export const setup = (plugins: Plugins, bindings: Bindings): void => {
   hljs = bindings.get('hljs')
   pluginSetup(plugins, bindings)
+  globalPlugins = plugins
+  globalBindings = bindings
   marked.use({ renderer: renderer(plugins), extensions: [inlineExpression(plugins)] })
 }
 
@@ -83,18 +88,30 @@ const inlineExpression = (plugins: Plugins) => ({
 export const translateMarkup = (text: string, module: IModule): string =>
   marked.parse(text, { nbv_module: module, nbv_render: true })
 
+export const translateURL = (url: string, module: IModule): Promise<string> =>
+  fetch(url)
+    .then((result) => result.text())
+    .then((text) => {
+      defineModuleConfig(module, url)
+
+      return marked.parse(text, { nbv_module: module, nbv_render: true })
+    })
+
+const defineModuleConfig = (module: IModule, url: string | undefined): void => {
+  module.variable().define('__config', [], {
+    url,
+    plugins: globalPlugins,
+    bindings: globalBindings
+  })
+}
+
 const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefined =>
   findMap(plugins, (plugin: Plugin) => {
     const match = infostring.match(plugin.pattern)
 
     return (match == null)
       ? undefined
-      : [
-          plugin,
-          parseInfoString(
-            plugin.name + ' ' + infostring.slice(match[0].length)
-          )
-        ]
+      : [plugin, parseInfoString(plugin.name + ' ' + infostring.slice(match[0].length))]
   })
 
 function findMap<X, Y> (
