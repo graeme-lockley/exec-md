@@ -98,8 +98,7 @@ const performImportItem = (module: IModule, pr: ImportStatement): Promise<IModul
       newModule.variable().define('__config', [], {
         url,
         plugins: config.plugins,
-        bindings: config.bindings,
-        modules: modules
+        bindings: config.bindings
       })
 
       importMarkup(text, newModule, config.plugins, modules)
@@ -215,7 +214,7 @@ const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefin
       : [plugin, parseInfoString(plugin.name + ' ' + infostring.slice(match[0].length))]
   })
 
-function findMap<X, Y>(
+function findMap<X, Y> (
   items: Array<X>,
   p: (x: X) => Y | undefined
 ): Y | undefined {

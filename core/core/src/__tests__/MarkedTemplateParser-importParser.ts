@@ -143,13 +143,10 @@ createList(10)
   const module = runtime.module()
   module.variable().define('__config', [], {
     url: './src/__tests/test.md',
-    plugins: [javascriptX],
-    modules
+    plugins: [javascriptX]
   })
 
   importMarkup(content, module, [javascriptX], modules)
-
-  console.log(modules)
 
   await Promise.all(modules)
 
@@ -158,9 +155,6 @@ createList(10)
   expect(await module.value('value')).toEqual(20)
   expect((await module.value('createList'))(10).length).toEqual(10)
 })
-
-const delay = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms))
 
 const validFetch = (result: string) => (url: string): Promise<any> =>
   Promise.resolve({
