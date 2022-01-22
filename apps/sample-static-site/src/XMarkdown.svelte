@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { translateMarkup } from "@exec-md/core";
+    import { translateURL } from "@exec-md/core";
     import { type IModule, type IRuntime, createRuntime } from "@exec-md/runtime";
 
     let runtime: IRuntime | undefined = undefined;
@@ -19,6 +19,6 @@
     }
 </script>
 
-{#await fetch(sourceURL).then((r) => r.text()) then text}
-    {@html translateMarkup(text, module)}
+{#await translateURL(sourceURL, module) then html}
+    {@html html}
 {/await}
