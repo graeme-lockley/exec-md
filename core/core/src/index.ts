@@ -1,1 +1,1 @@
-export { setup, standardSetup, translateMarkup } from './MarkedTemplateParser'
+export { setup, standardSetup, translateMarkup, translateURL } from './MarkedTemplateParser'
