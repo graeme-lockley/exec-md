@@ -23,4 +23,5 @@ jobs:
         # run: node common/scripts/install-run-rush.js install
       - run: rush install --no-link
       - run: rush link
+      - run: rush check
       - run: rush build --verbose
