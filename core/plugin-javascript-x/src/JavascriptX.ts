@@ -21,7 +21,7 @@ export const javascriptX: JavascriptX = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     const pr: ParseResult = parse(body)
 
     if (pr.type === 'assignment' || pr.type === 'exception') {
@@ -49,9 +49,8 @@ export const javascriptX: JavascriptX = {
 
       return ''
     } else {
-      performImport(module, pr).catch((e) => {
-        console.error('plugin-javascript-x: performImport: ', e)
-      })
+      const newModule = performImport(module, pr)
+      modules.push(newModule)
 
       if (render) {
         const id = `js-x-${idCount++}`
@@ -74,10 +73,10 @@ export const javascriptX: JavascriptX = {
   }
 }
 
-export const performImport = async (module: IModule, pr: ImportStatement): Promise<any> =>
+export const performImport = async (module: IModule, pr: ImportStatement): Promise<IModule> =>
   performImportItem(module, pr)
 
-const performImportItem = (module: IModule, pr: ImportStatement): Promise<any> => {
+const performImportItem = (module: IModule, pr: ImportStatement): Promise<IModule> => {
   const neverResolves = new Promise((resolve, reject) => {
   })
 
@@ -94,21 +93,23 @@ const performImportItem = (module: IModule, pr: ImportStatement): Promise<any> =
     const url = relativeURL(config.url, pr.urn)
     return fetch(url).then(result => result.text()).then(text => {
       const newModule = module._runtime.module()
+      const modules: Array<Promise<IModule>> = []
 
       newModule.variable().define('__config', [], {
         url,
         plugins: config.plugins,
-        bindings: config.bindings
+        bindings: config.bindings,
+        modules: modules
       })
 
-      importMarkup(text, newModule, config.plugins)
+      importMarkup(text, newModule, config.plugins, modules)
 
       pr.names.forEach(({ name, alias }) => {
         variables.get(alias).delete()
         module.variable().import(name, alias, newModule)
       })
 
-      return text
+      return Promise.all(modules).then(_ => newModule)
     })
   })
 }
@@ -133,7 +134,7 @@ const observer = (inspectorElementID: string, codeElementID: string, name: strin
   }
 }
 
-export const importMarkup = (text: string, module: IModule, plugins: Plugins): void => {
+export const importMarkup = (text: string, module: IModule, plugins: Plugins, modules: Array<Promise<IModule>>): void => {
   const lines = text.split(/\n/)
   const numberOfLines = lines.length
   let lp = 0
@@ -159,7 +160,7 @@ export const importMarkup = (text: string, module: IModule, plugins: Plugins): v
           if (findResponse !== undefined) {
             const [plugin, is] = findResponse
 
-            plugin.render(module, body, is, false)
+            plugin.render(module, body, is, false, modules)
           }
 
           lp = nextLp + 1
@@ -214,7 +215,7 @@ const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefin
       : [plugin, parseInfoString(plugin.name + ' ' + infostring.slice(match[0].length))]
   })
 
-function findMap<X, Y> (
+function findMap<X, Y>(
   items: Array<X>,
   p: (x: X) => Y | undefined
 ): Y | undefined {

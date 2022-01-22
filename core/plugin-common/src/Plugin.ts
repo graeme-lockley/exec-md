@@ -7,7 +7,7 @@ export interface Plugin {
     name: string;
     pattern: RegExp,
     setup?: (bindings: Bindings) => void,
-    render: (module: IModule, body: string, options: Options, render: boolean) => string | Node
+    render: (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>) => string | Node
 }
 
 export type Plugins = Array<Plugin>;

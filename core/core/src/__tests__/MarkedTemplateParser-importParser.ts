@@ -13,7 +13,7 @@ test('Empty content results in an empty module', () => {
 
   const runtime = createRuntime()
   const module = runtime.module()
-  importMarkup(content, module, [])
+  importMarkup(content, module, [], [])
 
   expect(module._scope.size).toEqual(0)
 })
@@ -26,7 +26,7 @@ Some text
 
   const runtime = createRuntime()
   const module = runtime.module()
-  importMarkup(content, module, [])
+  importMarkup(content, module, [], [])
 
   expect(module._scope.size).toEqual(0)
 })
@@ -46,7 +46,7 @@ x = 10
 
   const runtime = createRuntime()
   const module = runtime.module()
-  importMarkup(content, module, [])
+  importMarkup(content, module, [], [])
 
   expect(module._scope.size).toEqual(0)
 })
@@ -67,7 +67,7 @@ y = 10
 
   const runtime = createRuntime()
   const module = runtime.module()
-  importMarkup(content, module, [javascriptX])
+  importMarkup(content, module, [javascriptX], [])
 
   expect(module._scope.size).toEqual(2)
 
@@ -92,7 +92,7 @@ y = 10
   const importedModule = runtime.module()
   const module = runtime.module()
 
-  importMarkup(importedContent, importedModule, [javascriptX])
+  importMarkup(importedContent, importedModule, [javascriptX], [])
 
   module.variable().import('x', importedModule)
   module.variable().define('z', ['x'], (x: number) => x * 2)
@@ -139,15 +139,19 @@ createList(10)
 
   globalThis.fetch = validFetch(fetchResult)
 
+  const modules = []
   const module = runtime.module()
   module.variable().define('__config', [], {
     url: './src/__tests/test.md',
-    plugins: [javascriptX]
+    plugins: [javascriptX],
+    modules
   })
 
-  importMarkup(content, module, [javascriptX])
+  importMarkup(content, module, [javascriptX], modules)
 
-  await delay(1000)
+  console.log(modules)
+
+  await Promise.all(modules)
 
   expect(module._scope.size).toEqual(3)
 

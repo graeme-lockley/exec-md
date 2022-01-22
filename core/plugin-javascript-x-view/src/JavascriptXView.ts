@@ -21,7 +21,7 @@ export const javascriptXView: JavascriptXView = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     const pr = parse(body)
 
     if (pr.type === 'assignment' || pr.type === 'exception') {

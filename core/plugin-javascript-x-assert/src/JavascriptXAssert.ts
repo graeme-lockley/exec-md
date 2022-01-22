@@ -21,7 +21,7 @@ export const javascriptXAssert: JavascriptXAssert = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     if (render) {
       const pr =
         parse(body)

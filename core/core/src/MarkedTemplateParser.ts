@@ -31,7 +31,7 @@ const renderer = (plugins: Plugins) => ({
     else {
       const [plugin, is] = findResponse
 
-      return plugin.render(this.options.nbv_module, code, is, this.options.nbv_render)
+      return plugin.render(this.options.nbv_module, code, is, this.options.nbv_render, this.options.nbv_modules)
     }
   }
 })
@@ -80,14 +80,14 @@ const inlineExpression = (plugins: Plugins) => ({
     if (findResponse === undefined) { return '[Error: js inline: no plugin configured]' } else {
       const [plugin] = findResponse
 
-      return plugin.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render)
+      return plugin.render(this.parser.options.nbv_module, token.body, new Map(), this.parser.options.nbv_render, this.options.nbv_modules)
     }
   }
 })
 
 export const translateMarkup = (text: string, module: IModule, url: string = ''): string => {
   defineModuleConfig(module, url)
-  return marked.parse(text, { nbv_module: module, nbv_render: true })
+  return marked.parse(text, { nbv_module: module, nbv_render: true, nbv_modules: [] })
 }
 
 export const translateURL = (url: string, module: IModule): Promise<string> =>
@@ -96,7 +96,7 @@ export const translateURL = (url: string, module: IModule): Promise<string> =>
     .then((text) => {
       defineModuleConfig(module, url)
 
-      return marked.parse(text, { nbv_module: module, nbv_render: true })
+      return marked.parse(text, { nbv_module: module, nbv_render: true, nbv_modules: [] })
     })
 
 const defineModuleConfig = (module: IModule, url: string | undefined): void => {
