@@ -85,8 +85,10 @@ const inlineExpression = (plugins: Plugins) => ({
   }
 })
 
-export const translateMarkup = (text: string, module: IModule): string =>
-  marked.parse(text, { nbv_module: module, nbv_render: true })
+export const translateMarkup = (text: string, module: IModule, url: string = ''): string => {
+  defineModuleConfig(module, url)
+  return marked.parse(text, { nbv_module: module, nbv_render: true })
+}
 
 export const translateURL = (url: string, module: IModule): Promise<string> =>
   fetch(url)
