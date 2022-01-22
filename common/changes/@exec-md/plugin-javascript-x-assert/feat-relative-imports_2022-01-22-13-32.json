@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@exec-md/plugin-javascript-x-assert",
+      "comment": "Support for relative imports",
+      "type": "none"
+    }
+  ],
+  "packageName": "@exec-md/plugin-javascript-x-assert"
+}

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@exec-md/plugin-javascript-x",
+      "comment": "Enable relative imports coupled with faster markdown processing",
+      "type": "none"
+    }
+  ],
+  "packageName": "@exec-md/plugin-javascript-x"
+}
