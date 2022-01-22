@@ -1,6 +1,6 @@
 # exec-md
 
-A monoreport containing a number of projects supporting in-browser markdown execution of code placed in fenced code blocks.
+A monorepo containing a number of projects supporting in-browser markdown execution of code placed in fenced code blocks.
 
 ## Building
 
