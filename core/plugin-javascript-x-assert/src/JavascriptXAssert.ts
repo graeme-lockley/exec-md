@@ -4,7 +4,7 @@ import { parse } from '@exec-md/javascript-parser'
 import { valueUpdater, renderCode, type Bindings, type Options, type Plugin } from '@exec-md/plugin-common'
 
 interface JavascriptXAssert extends Plugin {
-    hljs: any | undefined;
+  hljs: any | undefined;
 }
 
 type Renderer = () => string;
@@ -21,20 +21,20 @@ export const javascriptXAssert: JavascriptXAssert = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     if (render) {
       const pr =
-                parse(body)
+        parse(body)
 
       if (pr.type === 'assignment') {
         const id =
-                    `js-x-assert-${idCount++}`
+          `js-x-assert-${idCount++}`
 
         const renderer: Renderer =
-                    () => renderCode(this.hljs, 'javascript', body)
+          () => renderCode(this.hljs, 'javascript', body)
 
         const variableObserver: Observer =
-                    observer(id, options.get('js-x-assert'), options.has('hide'), options.has('pin'), renderer)
+          observer(id, options.get('js-x-assert'), options.has('hide'), options.has('pin'), renderer)
 
         defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body)
 

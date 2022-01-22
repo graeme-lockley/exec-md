@@ -1,8 +1,7 @@
-import { marked } from 'marked'
 import { type IModule, type Observer, defineVariable } from '@exec-md/runtime'
 
 import { parse, type ImportStatement, type ParseResult } from '@exec-md/javascript-parser'
-import { valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin } from '@exec-md/plugin-common'
+import { parseInfoString, valueUpdater, inspectorUpdater, renderCode, type Bindings, type Inspector, type Options, type Plugin, type Plugins } from '@exec-md/plugin-common'
 
 interface JavascriptX extends Plugin {
   hljs: any | undefined;
@@ -22,7 +21,7 @@ export const javascriptX: JavascriptX = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     const pr: ParseResult = parse(body)
 
     if (pr.type === 'assignment' || pr.type === 'exception') {
@@ -50,7 +49,8 @@ export const javascriptX: JavascriptX = {
 
       return ''
     } else {
-      performImport(module, pr)
+      const newModule = performImport(module, pr)
+      modules.push(newModule)
 
       if (render) {
         const id = `js-x-${idCount++}`
@@ -66,12 +66,17 @@ export const javascriptX: JavascriptX = {
         defineVariable(module, variableObserver, undefined, aliases, `({${aliases.join(', ')}})`)
 
         return `<div id='${id}' class='nbv-js-x'><div id='${observerID}'></div><div id='${codeID}'></div></div>`
-      } else { return '' }
+      } else {
+        return ''
+      }
     }
   }
 }
 
-export const performImport = (module: IModule, pr: ImportStatement) => {
+export const performImport = async (module: IModule, pr: ImportStatement): Promise<IModule> =>
+  performImportItem(module, pr)
+
+const performImportItem = (module: IModule, pr: ImportStatement): Promise<IModule> => {
   const neverResolves = new Promise((resolve, reject) => {
   })
 
@@ -84,15 +89,28 @@ export const performImport = (module: IModule, pr: ImportStatement) => {
     v.define(alias, [], neverResolves)
   })
 
-  fetch(pr.urn).then((r) => r.text()).then((t) => {
-    const newModule = module._runtime.module()
-    importMarkup(t, newModule)
+  return module.value('__config').then((config) => {
+    const url = relativeURL(config.url, pr.urn)
+    return fetch(url).then(result => result.text()).then(text => {
+      const newModule = module._runtime.module()
+      const modules: Array<Promise<IModule>> = []
 
-    pr.names.forEach(({ name, alias }) => {
-      variables.get(alias).delete()
-      module.variable().import(name, alias, newModule)
+      newModule.variable().define('__config', [], {
+        url,
+        plugins: config.plugins,
+        bindings: config.bindings
+      })
+
+      importMarkup(text, newModule, config.plugins, modules)
+
+      pr.names.forEach(({ name, alias }) => {
+        variables.get(alias).delete()
+        module.variable().import(name, alias, newModule)
+      })
+
+      return Promise.all(modules).then(_ => newModule)
     })
-  }).catch(e => console.log(e))
+  })
 }
 
 const observer = (inspectorElementID: string, codeElementID: string, name: string | undefined, hide: boolean, pin: boolean, renderer: Renderer): Observer => {
@@ -115,5 +133,100 @@ const observer = (inspectorElementID: string, codeElementID: string, name: strin
   }
 }
 
-export const importMarkup = (text: string, module: IModule): void =>
-  marked.parse(text, { nbv_module: module, nbv_render: false })
+export const importMarkup = (text: string, module: IModule, plugins: Plugins, modules: Array<Promise<IModule>>): void => {
+  const lines = text.split(/\n/)
+  const numberOfLines = lines.length
+  let lp = 0
+
+  while (lp < numberOfLines) {
+    const line = lines[lp]
+
+    if (line.startsWith('```')) {
+      let nextLp = lp + 1
+      while (true) {
+        if (nextLp === numberOfLines) {
+          return
+        }
+
+        const nextLine = lines[nextLp]
+
+        if (nextLine.startsWith('```')) {
+          const body = lines.slice(lp + 1, nextLp).join('\n')
+          const infostring = line.slice(3).trim()
+
+          const findResponse = find(plugins, infostring)
+
+          if (findResponse !== undefined) {
+            const [plugin, is] = findResponse
+
+            plugin.render(module, body, is, false, modules)
+          }
+
+          lp = nextLp + 1
+          break
+        }
+
+        nextLp += 1
+      }
+    }
+
+    lp += 1
+  }
+}
+
+export const relativeURL = (baseURL: string, relURL: string): string => {
+  if (relURL.startsWith('http:') || relURL.startsWith('https:') || relURL.startsWith('/')) {
+    return relURL
+  }
+
+  const dropLastComponent = (name: string): string => {
+    if (name.length === 0) {
+      return name
+    }
+
+    const idx = name.lastIndexOf('/', name[name.length - 1] === '/' ? name.length - 2 : name.length - 1)
+
+    return (idx === -1)
+      ? '/'
+      : name.slice(0, idx + 1)
+  }
+
+  baseURL = dropLastComponent(baseURL)
+
+  while (true) {
+    if (relURL.startsWith('./')) {
+      relURL = relURL.slice(2)
+    } else if (relURL.startsWith('../')) {
+      relURL = relURL.slice(3)
+      baseURL = dropLastComponent(baseURL)
+    } else {
+      return baseURL + relURL
+    }
+  }
+}
+
+const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefined =>
+  findMap(plugins, (plugin: Plugin) => {
+    const match = infostring.match(plugin.pattern)
+
+    return (match == null)
+      ? undefined
+      : [plugin, parseInfoString(plugin.name + ' ' + infostring.slice(match[0].length))]
+  })
+
+function findMap<X, Y> (
+  items: Array<X>,
+  p: (x: X) => Y | undefined
+): Y | undefined {
+  let idx = 0
+
+  while (idx < items.length) {
+    const r = p(items[idx])
+
+    if (r !== undefined) return r
+
+    idx += 1
+  }
+
+  return undefined
+}

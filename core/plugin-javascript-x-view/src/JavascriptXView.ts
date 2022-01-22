@@ -4,7 +4,7 @@ import { parse } from '@exec-md/javascript-parser'
 import { valueUpdater, renderCode, type Bindings, type Options, type Plugin } from '@exec-md/plugin-common'
 
 interface JavascriptXView extends Plugin {
-    hljs: any | undefined;
+  hljs: any | undefined;
 }
 
 type Renderer = () => string;
@@ -21,7 +21,7 @@ export const javascriptXView: JavascriptXView = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     const pr = parse(body)
 
     if (pr.type === 'assignment' || pr.type === 'exception') {
@@ -31,12 +31,12 @@ export const javascriptXView: JavascriptXView = {
         const codeID = viewCellID + '-code'
 
         const renderer: Renderer =
-                    () => renderCode(this.hljs, 'javascript', body)
+          () => renderCode(this.hljs, 'javascript', body)
 
         const name = pr.type === 'assignment' ? pr.name : undefined
 
         const variableObserver: Observer =
-                    observer(viewID, codeID, name, options.has('pin'), renderer)
+          observer(viewID, codeID, name, options.has('pin'), renderer)
 
         if (pr.type === 'assignment') {
           if (name === undefined) { defineVariable(module, variableObserver, pr.name, pr.dependencies, pr.body) } else {
@@ -53,8 +53,7 @@ export const javascriptXView: JavascriptXView = {
 
         return `<div id='${viewCellID}' class='nbv-js-x-view'><div id='${viewID}'></div><div id='${codeID}'></div></div>`
       } else if (pr.type === 'assignment' && pr.name !== undefined) {
-        defineVariable(module, undefined, pr
-          .name, [], 'undefined')
+        defineVariable(module, undefined, pr.name, [], 'undefined')
       }
       return ''
     } else if (render) { return '<div class=\'nbv-js-x-assert\'>Unable to view an import</div>' } else { return '' }

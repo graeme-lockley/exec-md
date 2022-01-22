@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@exec-md/core",
+      "comment": "Support for relative imports",
+      "type": "none"
+    }
+  ],
+  "packageName": "@exec-md/core"
+}

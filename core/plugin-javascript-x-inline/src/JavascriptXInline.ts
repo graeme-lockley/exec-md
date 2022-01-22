@@ -19,7 +19,7 @@ export const javascriptXInline: JavascriptXInline = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     if (render) {
       if (body === null || body === undefined || body === '') { return '<span class=\'nbv-js-x-inline\'></span>' } else {
         try {

@@ -4,7 +4,7 @@ import { valueUpdater, renderCode, type Bindings, type Options, type Plugin } fr
 import { parseCell } from '@observablehq/parser'
 
 interface KrokiX extends Plugin {
-    hljs: any | undefined;
+  hljs: any | undefined;
 }
 
 const supportedDiagramTypes = new Set([
@@ -42,7 +42,7 @@ export const krokiX: KrokiX = {
     this.hljs = bindings.get('hljs')
   },
 
-  render: function (module: IModule, body: string, options: Options, render: boolean): string | Node {
+  render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
     if (render) {
       const id = `kroki-x-${idCount++}`
       const observerID = id + '-value'
@@ -54,10 +54,10 @@ export const krokiX: KrokiX = {
       if (supportedDiagramTypes.has(type)) {
         /* render based on type */
         const renderer: Renderer =
-                    (body: string) => renderCode(this.hljs, 'plaintext', body)
+          (body: string) => renderCode(this.hljs, 'plaintext', body)
 
         const variableObserver =
-                    observer(observerID, codeID, type, body, options.has('pin'), renderer)
+          observer(observerID, codeID, type, body, options.has('pin'), renderer)
 
         const f = functionFromBody(body)
 
