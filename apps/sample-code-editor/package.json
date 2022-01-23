@@ -41,7 +41,6 @@
     "@exec-md/core": "^1.0.1",
     "@exec-md/runtime": "^1.0.1",
     "highlight.js": "^11.3.1",
-    "marked": "^4.0.6",
     "sirv-cli": "^1.0.0",
     "codemirror": "^5.65.0"
   }

@@ -45,7 +45,6 @@
     "dependencies": {
         "@exec-md/runtime": "^1.0.1",
         "@exec-md/plugin-common": "^1.0.1",
-        "@exec-md/javascript-parser": "^1.0.1",
-        "marked": "^4.0.6"
+        "@exec-md/javascript-parser": "^1.0.1"
     }
 }
