@@ -149,7 +149,7 @@ tableRows
 Of course we can also import variables from a notebook into this notebook.
 
 ``` js x
-import { y as listLength, createList } from "/notebooks/basic.md"
+import { y as listLength, createList } from "./basic.md"
 ```
 
 ``` js x | pin
