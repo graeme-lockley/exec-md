@@ -1,4 +1,4 @@
-name: Build execmd
+name: Build exec-md
 
 on:
   push:
