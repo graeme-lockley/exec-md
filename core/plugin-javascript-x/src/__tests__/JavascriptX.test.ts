@@ -1,8 +1,7 @@
 import * as FS from 'fs'
 
-import { performImport, relativeURL } from '../JavascriptX'
+import { javascriptX, performImport, relativeURL } from '../JavascriptX'
 import { createRuntime, IModule } from '@exec-md/runtime'
-import { javascriptX } from '..'
 
 describe('relativeURL', () => {
   test('relative to local', () => {
