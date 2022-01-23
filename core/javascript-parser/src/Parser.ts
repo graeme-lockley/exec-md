@@ -1,21 +1,21 @@
 import { parseCell } from '@observablehq/parser'
 
 export interface ImportStatement {
-    type: 'import';
-    names: Array<{ name: string; alias: string }>;
-    urn: string;
+  type: 'import';
+  names: Array<{ name: string; alias: string }>;
+  urn: string;
 }
 
 export interface AssignmentStatement {
-    type: 'assignment';
-    name?: string;
-    dependencies: Array<string>;
-    body: string;
+  type: 'assignment';
+  name?: string;
+  dependencies: Array<string>;
+  body: string;
 }
 
 export interface ExceptionStatement {
-    type: 'exception';
-    exception: any;
+  type: 'exception';
+  exception: any;
 }
 
 export type ParseResult = AssignmentStatement | ImportStatement | ExceptionStatement;
@@ -26,10 +26,10 @@ export const parse = (code: string): ParseResult => {
 
     if (ast?.body?.type === 'ImportDeclaration') {
       const names: Array<{ name: string; alias: string }> =
-                ast.body.specifiers.map((s: any) => ({ name: s.imported.name, alias: s.local.name }))
+        ast.body.specifiers.map((s: any) => ({ name: s.imported.name, alias: s.local.name }))
 
       const urn: string =
-                ast.body.source.value
+        ast.body.source.value
 
       return { type: 'import', names, urn }
     } else {
