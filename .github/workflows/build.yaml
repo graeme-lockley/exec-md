@@ -1,4 +1,4 @@
-name: Build execmd
+name: Build exec-md
 
 on:
   push:
@@ -19,9 +19,14 @@ jobs:
           node-version: 14.x
 
       - name: Install rush
-        run: npm install -g @microsoft/rush
+        run: npm install -g @microsoft/rush pnpm npm-check-updates
         # run: node common/scripts/install-run-rush.js install
+      - name: Check that dependency versions across projects are consistent
+        run: rush check
       - run: rush install --no-link
       - run: rush link
-      - run: rush check
+      - name: Check that there are no audit issues with any of the dependencies
+        run: |
+          cd ./common/temp
+          pnpm audit
       - run: rush build --verbose
