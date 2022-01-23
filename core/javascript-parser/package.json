@@ -1,6 +1,6 @@
 {
     "name": "@exec-md/javascript-parser",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Parsers JavaScript to determine external dependencies",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
