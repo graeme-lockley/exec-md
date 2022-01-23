@@ -11,7 +11,7 @@ blockdiag {
 ```
 
 ``` js x | pin
-import { arbList, createList, listLength } from "/notebooks/simple.md"
+import { arbList, createList, listLength } from "simple.md"
 ```
 
 ``` js x | pin
@@ -57,5 +57,5 @@ Finally let's show off a more complex example - pulling in the platform view whe
 ```
 
 ``` js x | hide
-import { platformInto } from "/notebooks/common-components/platform-components.md"
+import { platformInto } from "common-components/platform-components.md"
 ```
