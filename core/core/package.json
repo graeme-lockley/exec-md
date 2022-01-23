@@ -50,6 +50,6 @@
         "@exec-md/plugin-javascript-x-view": "^1.0.1",
         "@exec-md/plugin-kroki-x": "^1.0.1",
         "highlight.js": "^11.3.1",
-        "marked": "^4.0.6"
+        "marked": "^4.0.10"
     }
 }
