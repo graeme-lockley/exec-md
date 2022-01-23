@@ -1,15 +1,15 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@babel/preset-env': ^7.16.5
+  '@babel/preset-env': ^7.16.11
   '@jest/types': ^27.4.2
   '@observablehq/inspector': ^3.2.4
   '@observablehq/parser': ^5.0.0
-  '@observablehq/runtime': ^4.18.3
-  '@observablehq/stdlib': ^3.15.3
+  '@observablehq/runtime': ^4.18.4
+  '@observablehq/stdlib': ^3.15.4
   '@rollup/plugin-commonjs': ^21.0.1
-  '@rollup/plugin-node-resolve': ^13.1.1
-  '@rollup/plugin-typescript': ^8.0.0
+  '@rollup/plugin-node-resolve': ^13.1.3
+  '@rollup/plugin-typescript': ^8.3.0
   '@rush-temp/core': file:./projects/core.tgz
   '@rush-temp/javascript-parser': file:./projects/javascript-parser.tgz
   '@rush-temp/load-resource': file:./projects/load-resource.tgz
@@ -23,39 +23,39 @@ specifiers:
   '@rush-temp/sample-code-editor': file:./projects/sample-code-editor.tgz
   '@rush-temp/sample-static-site': file:./projects/sample-static-site.tgz
   '@rush-temp/sample-svelte': file:./projects/sample-svelte.tgz
-  '@testing-library/jest-dom': ^5.11.4
-  '@testing-library/svelte': ^3.0.0
+  '@testing-library/jest-dom': ^5.16.1
+  '@testing-library/svelte': ^3.0.3
   '@tsconfig/svelte': ^3.0.0
-  '@types/jest': ^27.0.3
+  '@types/jest': ^27.4.0
   '@types/node': ^17.0.10
-  '@typescript-eslint/eslint-plugin': ^5.8.1
-  '@typescript-eslint/parser': ^5.8.1
-  babel-jest: ^27.4.5
-  codemirror: ^5.65.0
-  eslint: ^8.5.0
+  '@typescript-eslint/eslint-plugin': ^5.10.0
+  '@typescript-eslint/parser': ^5.10.0
+  babel-jest: ^27.4.6
+  codemirror: ^5.65.1
+  eslint: ^8.7.0
   eslint-config-standard: ^16.0.3
-  eslint-plugin-import: ^2.25.3
-  eslint-plugin-jest: ^25.3.2
+  eslint-plugin-import: ^2.25.4
+  eslint-plugin-jest: ^25.7.0
   eslint-plugin-node: ^11.1.0
   eslint-plugin-promise: ^6.0.0
-  highlight.js: ^11.3.1
-  jest: ^27.4.5
+  highlight.js: ^11.4.0
+  jest: ^27.4.7
   marked: ^4.0.10
-  pnpm: ^6.24.3
-  rollup: ^2.3.4
+  pnpm: ^6.27.1
+  rollup: ^2.66.0
   rollup-plugin-css-only: ^3.1.0
-  rollup-plugin-livereload: ^2.0.0
-  rollup-plugin-svelte: ^7.0.0
-  rollup-plugin-terser: ^7.0.0
-  sirv-cli: ^1.0.0
-  svelte: ^3.0.0
-  svelte-check: ^2.0.0
+  rollup-plugin-livereload: ^2.0.5
+  rollup-plugin-svelte: ^7.1.0
+  rollup-plugin-terser: ^7.0.2
+  sirv-cli: ^2.0.2
+  svelte: ^3.46.2
+  svelte-check: ^2.3.0
   svelte-jester: ^2.1.5
-  svelte-preprocess: ^4.0.0
-  ts-jest: ^27.1.2
+  svelte-preprocess: ^4.10.2
+  ts-jest: ^27.1.3
   ts-node: ^10.4.0
-  tslib: ^2.0.0
-  typescript: ^4.5.4
+  tslib: ^2.3.1
+  typescript: ^4.5.5
 
 dependencies:
   '@babel/preset-env': 7.16.11
@@ -104,7 +104,7 @@ dependencies:
   rollup-plugin-livereload: 2.0.5
   rollup-plugin-svelte: 7.1.0_rollup@2.66.0+svelte@3.46.2
   rollup-plugin-terser: 7.0.2_rollup@2.66.0
-  sirv-cli: 1.0.14
+  sirv-cli: 2.0.2
   svelte: 3.46.2
   svelte-check: 2.3.0_svelte@3.46.2
   svelte-jester: 2.1.5_jest@27.4.7+svelte@3.46.2
@@ -4244,6 +4244,11 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /kleur/4.1.4:
+    resolution: {integrity: sha512-8QADVssbrFjivHWQU7KkMgptGTl6WAcSdlbBPY4uNF+mWr6DGcKrvY2w4FQJoXch7+fKMjj0dRrL75vk3k23OA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /leven/3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
@@ -4982,28 +4987,28 @@ packages:
     resolution: {integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==}
     dev: false
 
-  /sirv-cli/1.0.14:
-    resolution: {integrity: sha512-yyUTNr984ANKDloqepkYbBSqvx3buwYg2sQKPWjSU+IBia5loaoka2If8N9CMwt8AfP179cdEl7kYJ//iWJHjQ==}
+  /sirv-cli/2.0.2:
+    resolution: {integrity: sha512-OtSJDwxsF1NWHc7ps3Sa0s+dPtP15iQNJzfKVz+MxkEo3z72mCD+yu30ct79rPr0CaV1HXSOBp+MIY5uIhHZ1A==}
     engines: {node: '>= 10'}
     hasBin: true
     dependencies:
       console-clear: 1.1.1
       get-port: 3.2.0
-      kleur: 3.0.3
+      kleur: 4.1.4
       local-access: 1.1.0
       sade: 1.8.1
       semiver: 1.1.0
-      sirv: 1.0.19
+      sirv: 2.0.2
       tinydate: 1.3.0
     dev: false
 
-  /sirv/1.0.19:
-    resolution: {integrity: sha512-JuLThK3TnZG1TAKDwNIqNq6QA2afLOCcm+iE8D1Kj3GA40pSPsxQjjJl0J8X3tsR7T+CP1GavpzLwYkgVLWrZQ==}
+  /sirv/2.0.2:
+    resolution: {integrity: sha512-4Qog6aE29nIjAOKe/wowFTxOdmbEZKb+3tsLljaBRzJwtqto0BChD2zzH0LhgCSXiI+V7X+Y45v14wBZQ1TK3w==}
     engines: {node: '>= 10'}
     dependencies:
       '@polka/url': 1.0.0-next.21
       mrmime: 1.0.0
-      totalist: 1.1.0
+      totalist: 3.0.0
     dev: false
 
   /sisteransi/1.0.5:
@@ -5330,8 +5335,8 @@ packages:
       is-number: 7.0.0
     dev: false
 
-  /totalist/1.1.0:
-    resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}
+  /totalist/3.0.0:
+    resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
     engines: {node: '>=6'}
     dev: false
 
@@ -5687,7 +5692,7 @@ packages:
     dev: false
 
   file:projects/core.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-oWXYB2xw5JujrhwRUO/Kni2up4EES3w1bVeZt84nOoiZmXXhycNFQT7vEFtobCFBLU6GifoFVlyPBNn9dhJ66A==, tarball: file:projects/core.tgz}
+    resolution: {integrity: sha512-VaeYOSetSeLRFwG/zwPT+dgPnuSBepKdetJHEdxI5+Tn085apoNGWKWmp5ge4ClszCLbSzI857m4vbAXJqjTTA==, tarball: file:projects/core.tgz}
     id: file:projects/core.tgz
     name: '@rush-temp/core'
     version: 0.0.0
@@ -5724,7 +5729,7 @@ packages:
     dev: false
 
   file:projects/javascript-parser.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-ECm0DnvzB4KE1ZznrgDYQXsqmWXmVthW+S+oj0WkU17wdja6QOq/jD9VISV/sYmRJPCxfBbdMJaIXYcJ7g6glw==, tarball: file:projects/javascript-parser.tgz}
+    resolution: {integrity: sha512-OWIGIc/ae9GbDNRGpih9Wn+5j5nSBIBGGi12qoahgPcqDccvPKdpGP3o/aiwMvpoW05BLKcoZk4oBtfgy/82sg==, tarball: file:projects/javascript-parser.tgz}
     id: file:projects/javascript-parser.tgz
     name: '@rush-temp/javascript-parser'
     version: 0.0.0
@@ -5760,7 +5765,7 @@ packages:
     dev: false
 
   file:projects/load-resource.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-yugFlBfX22khgFv1ZvbKfGU4cZhhChaD1WY9sFjoMWLAlNeponQi8n57YCgB/DBe4fbe50WNNX6DnxOqvccptA==, tarball: file:projects/load-resource.tgz}
+    resolution: {integrity: sha512-kdKHry0qMcr2NIts8KSqVHokhW9C6GVinGy0N14DbAUAqwzrwAPj7u3QtYJNudI/GHyuPEbWOXhi89dPv2d2wA==, tarball: file:projects/load-resource.tgz}
     id: file:projects/load-resource.tgz
     name: '@rush-temp/load-resource'
     version: 0.0.0
@@ -5796,7 +5801,7 @@ packages:
     dev: false
 
   file:projects/plugin-common.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-au3MDX/AFCBxor0me+hZqzSHQa7LtbEwEbnm8zP4GWROhMLraNVx2XttRDsVt3LBmiNEKHwA5L9+SWRb35Tvvw==, tarball: file:projects/plugin-common.tgz}
+    resolution: {integrity: sha512-6wlinJgPvCtZ3yiwGQ44KzfNdHYrD1AjpnxxktS3D9xwmEgR5KX1/zI253UFGwNpZRgEGxVML7sGj9aRGc6Y4w==, tarball: file:projects/plugin-common.tgz}
     id: file:projects/plugin-common.tgz
     name: '@rush-temp/plugin-common'
     version: 0.0.0
@@ -5832,7 +5837,7 @@ packages:
     dev: false
 
   file:projects/plugin-javascript-x-assert.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-j4fvOwDj96vR3kwCZXdd4csvm7c+coBcso9o7q3dGZ59IVg0aFjf26PdUB0C+wWMGgE4R3e8wyMK9ICYuDADGg==, tarball: file:projects/plugin-javascript-x-assert.tgz}
+    resolution: {integrity: sha512-rUCVXxgSp0KU0gxFk0XlGb59trEWzaBGqHpZ/FHW958NWCTtUhawFk680Fp1qJTPry+HbGdbjxzyo4kO8q9Ouw==, tarball: file:projects/plugin-javascript-x-assert.tgz}
     id: file:projects/plugin-javascript-x-assert.tgz
     name: '@rush-temp/plugin-javascript-x-assert'
     version: 0.0.0
@@ -5867,7 +5872,7 @@ packages:
     dev: false
 
   file:projects/plugin-javascript-x-inline.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-kw701uFJF7kfr/uwrvIx3+qo9+QkmLLhDWapmN3AEpFANnDU+rKUNYXZOASbiJzsCNCtepMKPyrteIe+mMISOA==, tarball: file:projects/plugin-javascript-x-inline.tgz}
+    resolution: {integrity: sha512-2/lk2VfXiWcWQYUW4eh1INKMQc7yZM6/kb5tGvF6s2y95uUYk8QGbxDU3w1kvaiXOTFw0XdmCuaX1GpamEUzvA==, tarball: file:projects/plugin-javascript-x-inline.tgz}
     id: file:projects/plugin-javascript-x-inline.tgz
     name: '@rush-temp/plugin-javascript-x-inline'
     version: 0.0.0
@@ -5902,7 +5907,7 @@ packages:
     dev: false
 
   file:projects/plugin-javascript-x-view.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-VsediIPLl9JaSRAApcD/WgyYU/1mZnZ3CUNm83GrVAmtYa6M4kL2x1jhKGE39tLHqppQvsZXcJme6DqguR/NKw==, tarball: file:projects/plugin-javascript-x-view.tgz}
+    resolution: {integrity: sha512-qf/8sqZB8TebQMJhakbIPmvMltIOOysyGtoN5MBu0byA9H/RU3e7EI6CiVaBsnQ1/KQe/KNulRT6vwyWhgMJrQ==, tarball: file:projects/plugin-javascript-x-view.tgz}
     id: file:projects/plugin-javascript-x-view.tgz
     name: '@rush-temp/plugin-javascript-x-view'
     version: 0.0.0
@@ -5937,7 +5942,7 @@ packages:
     dev: false
 
   file:projects/plugin-javascript-x.tgz_babel-jest@27.4.6:
-    resolution: {integrity: sha512-Gw7+rOFGcf0ztlcBFGUcXHge4VTP2JZPhHlFlVS3aJiu5p7FdlcZnMD6/TzouNfr5ybzPcP04uxVNQJEA10IDw==, tarball: file:projects/plugin-javascript-x.tgz}
+    resolution: {integrity: sha512-oDn5cCry7blA6ar9EeQ3/3NfFSHDKHc42OpVe+4aVIMw04W5MIKJ0jpWLww7dN8ySK6Vd3GRdYBzfYs3ktlfIw==, tarball: file:projects/plugin-javascript-x.tgz}
     id: file:projects/plugin-javascript-x.tgz
     name: '@rush-temp/plugin-javascript-x'
     version: 0.0.0
@@ -5972,7 +5977,7 @@ packages:
     dev: false
 
   file:projects/plugin-kroki-x.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-ShVP/dkXvdH+hoAI3rqRoJjgvAsdVDfjYNJVyFl+MkxOGVv9NyXTsEy2DadXN/T0G9OR45ZyXjs9EDFklWd0Eg==, tarball: file:projects/plugin-kroki-x.tgz}
+    resolution: {integrity: sha512-hQ5z4v5DLEdTxmowdgWnGjD+J1r0sm8lGJdefRwXxQLpZAopL6zT8Z5r8aMptRl1XxBpOCFyxyz3jwGsSHF4Fg==, tarball: file:projects/plugin-kroki-x.tgz}
     id: file:projects/plugin-kroki-x.tgz
     name: '@rush-temp/plugin-kroki-x'
     version: 0.0.0
@@ -6008,7 +6013,7 @@ packages:
     dev: false
 
   file:projects/runtime.tgz_599c32c518ec825dfc60b6b62b755f69:
-    resolution: {integrity: sha512-JrdZB1aPdlyj0eNhjFBNjzu9sEAoiLEdgIXe2rzpKFygYokjkpUd1nsKPMff7DGIP1Nbl7/W8fy5+N1ZXXc6XA==, tarball: file:projects/runtime.tgz}
+    resolution: {integrity: sha512-9X7RxMQGszZEopvvl1+FwakZUjaaF804Hk78s0CeFqzqqSXKxXzWLHBuWYdZvHfuahtvA7J/3J/R+oJfOAmBJA==, tarball: file:projects/runtime.tgz}
     id: file:projects/runtime.tgz
     name: '@rush-temp/runtime'
     version: 0.0.0
@@ -6044,7 +6049,7 @@ packages:
     dev: false
 
   file:projects/sample-code-editor.tgz_ts-node@10.4.0:
-    resolution: {integrity: sha512-zUyHmkCkH2jT04ftzv3m3lBizPtwvbfK3jsIPrcuXOA8U9iFiXDya864RPphM8VJryM+45pLJhmPyH/SjjMaaA==, tarball: file:projects/sample-code-editor.tgz}
+    resolution: {integrity: sha512-WylV3bVXou4HzxClHdTz5vgnq+5ECF6ZLzX16j731zo36rqzVwYckf9VExgqxCJwUYYL6l2x5JU8jWyRmk/ung==, tarball: file:projects/sample-code-editor.tgz}
     id: file:projects/sample-code-editor.tgz
     name: '@rush-temp/sample-code-editor'
     version: 0.0.0
@@ -6067,7 +6072,7 @@ packages:
       rollup-plugin-livereload: 2.0.5
       rollup-plugin-svelte: 7.1.0_rollup@2.66.0+svelte@3.46.2
       rollup-plugin-terser: 7.0.2_rollup@2.66.0
-      sirv-cli: 1.0.14
+      sirv-cli: 2.0.2
       svelte: 3.46.2
       svelte-check: 2.3.0_svelte@3.46.2
       svelte-jester: 2.1.5_jest@27.4.7+svelte@3.46.2
@@ -6097,7 +6102,7 @@ packages:
     dev: false
 
   file:projects/sample-static-site.tgz_ts-node@10.4.0:
-    resolution: {integrity: sha512-1t6LFbfDArYcdVM6aBDyh6dEfZCUfljblR6AuXK2qP501FuURh0xbJmDBnKdwhYX958+R7UpeNn4nn6aI7GH6Q==, tarball: file:projects/sample-static-site.tgz}
+    resolution: {integrity: sha512-BXGTdrUHG/x5KNCgFdyDIlMPMLmEdzcqdll0Sa0pzrDRShZtjjRp4S1bLGEgE9HlhTPWSCZEOC23Ne3dF+gwRA==, tarball: file:projects/sample-static-site.tgz}
     id: file:projects/sample-static-site.tgz
     name: '@rush-temp/sample-static-site'
     version: 0.0.0
@@ -6119,7 +6124,7 @@ packages:
       rollup-plugin-livereload: 2.0.5
       rollup-plugin-svelte: 7.1.0_rollup@2.66.0+svelte@3.46.2
       rollup-plugin-terser: 7.0.2_rollup@2.66.0
-      sirv-cli: 1.0.14
+      sirv-cli: 2.0.2
       svelte: 3.46.2
       svelte-check: 2.3.0_svelte@3.46.2
       svelte-jester: 2.1.5_jest@27.4.7+svelte@3.46.2
@@ -6149,7 +6154,7 @@ packages:
     dev: false
 
   file:projects/sample-svelte.tgz_ts-node@10.4.0:
-    resolution: {integrity: sha512-R+LfKvZdME/zBqZr0cIE9ce23Fz2ItXWL65kKTps0TimLkMZbTpPvgBWrGtFKHvZ1OnOKA3zUJDaWO5mG9+U8g==, tarball: file:projects/sample-svelte.tgz}
+    resolution: {integrity: sha512-3ZSf2K4VCGnx0sOJGYaekuYMmSXW91fwbxggNe/IcRDGm9rR1xnfngbLt6OdDPUzamVek+MDHWxinAJtbL9l/A==, tarball: file:projects/sample-svelte.tgz}
     id: file:projects/sample-svelte.tgz
     name: '@rush-temp/sample-svelte'
     version: 0.0.0
@@ -6171,7 +6176,7 @@ packages:
       rollup-plugin-livereload: 2.0.5
       rollup-plugin-svelte: 7.1.0_rollup@2.66.0+svelte@3.46.2
       rollup-plugin-terser: 7.0.2_rollup@2.66.0
-      sirv-cli: 1.0.14
+      sirv-cli: 2.0.2
       svelte: 3.46.2
       svelte-check: 2.3.0_svelte@3.46.2
       svelte-jester: 2.1.5_jest@27.4.7+svelte@3.46.2
