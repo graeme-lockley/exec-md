@@ -28,7 +28,7 @@ value = {
 This code is evaluated, the result displayed and the code is pinned directly below.  What's cool is this value is reactive and dependent on `value`.
 
 ``` js x | pin
-{
+valuesSquared = {
     const square = (x) => x * x;
 
     return value.map(square);
