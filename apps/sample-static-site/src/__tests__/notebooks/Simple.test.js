@@ -38,18 +38,18 @@ describe('Simple Notebook', () => {
         const athletes = await module.value('athletes')
 
         expect(athletes[0]).toEqual({
-            "bronze": 0,
-            "date_of_birth": new Date('1969-10-17T00:00:00.000Z'),
-            "gold": 0,
-            "height": 1.72,
-            "id": 736041664,
-            "info": null,
-            "name": "A Jesus Garcia",
-            "nationality": "ESP",
-            "sex": "male",
-            "silver": 0,
-            "sport": "athletics",
-            "weight": 64,
+            'bronze': 0,
+            'date_of_birth': new Date('1969-10-17T00:00:00.000Z'),
+            'gold': 0,
+            'height': 1.72,
+            'id': 736041664,
+            'info': null,
+            'name': 'A Jesus Garcia',
+            'nationality': 'ESP',
+            'sex': 'male',
+            'silver': 0,
+            'sport': 'athletics',
+            'weight': 64
         })
 
         expect(athletes.length).toEqual(11538)
