@@ -27,11 +27,11 @@ specifiers:
   '@testing-library/svelte': ^3.0.3
   '@tsconfig/svelte': ^3.0.0
   '@types/jest': ^27.4.0
-  '@types/node': ^17.0.13
   '@typescript-eslint/eslint-plugin': ^5.10.1
   '@typescript-eslint/parser': ^5.10.1
   babel-jest: ^27.4.6
   codemirror: ^5.65.1
+  core-js: ~3.20.3
   eslint: ^8.8.0
   eslint-config-standard: ^16.0.3
   eslint-plugin-import: ^2.25.4
@@ -42,6 +42,7 @@ specifiers:
   jest: ^27.4.7
   marked: ^4.0.12
   pnpm: ^6.28.0
+  regenerator-runtime: ~0.13.9
   rollup: ^2.66.1
   rollup-plugin-css-only: ^3.1.0
   rollup-plugin-livereload: ^2.0.5
@@ -67,16 +68,16 @@ dependencies:
   '@rollup/plugin-commonjs': 21.0.1_rollup@2.66.1
   '@rollup/plugin-node-resolve': 13.1.3_rollup@2.66.1
   '@rollup/plugin-typescript': 8.3.0_a652e97aea7ea04fb4c9edbfa5b475e6
-  '@rush-temp/core': file:projects/core.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/javascript-parser': file:projects/javascript-parser.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/load-resource': file:projects/load-resource.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/plugin-common': file:projects/plugin-common.tgz_5a28167401dbe5474053d6bb66a327b0
+  '@rush-temp/core': file:projects/core.tgz_babel-jest@27.4.6
+  '@rush-temp/javascript-parser': file:projects/javascript-parser.tgz_babel-jest@27.4.6
+  '@rush-temp/load-resource': file:projects/load-resource.tgz_babel-jest@27.4.6
+  '@rush-temp/plugin-common': file:projects/plugin-common.tgz_babel-jest@27.4.6
   '@rush-temp/plugin-javascript-x': file:projects/plugin-javascript-x.tgz_babel-jest@27.4.6
-  '@rush-temp/plugin-javascript-x-assert': file:projects/plugin-javascript-x-assert.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/plugin-javascript-x-inline': file:projects/plugin-javascript-x-inline.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/plugin-javascript-x-view': file:projects/plugin-javascript-x-view.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/plugin-kroki-x': file:projects/plugin-kroki-x.tgz_5a28167401dbe5474053d6bb66a327b0
-  '@rush-temp/runtime': file:projects/runtime.tgz_5a28167401dbe5474053d6bb66a327b0
+  '@rush-temp/plugin-javascript-x-assert': file:projects/plugin-javascript-x-assert.tgz_babel-jest@27.4.6
+  '@rush-temp/plugin-javascript-x-inline': file:projects/plugin-javascript-x-inline.tgz_babel-jest@27.4.6
+  '@rush-temp/plugin-javascript-x-view': file:projects/plugin-javascript-x-view.tgz_babel-jest@27.4.6
+  '@rush-temp/plugin-kroki-x': file:projects/plugin-kroki-x.tgz_babel-jest@27.4.6
+  '@rush-temp/runtime': file:projects/runtime.tgz_babel-jest@27.4.6
   '@rush-temp/sample-code-editor': file:projects/sample-code-editor.tgz_ts-node@10.4.0
   '@rush-temp/sample-static-site': file:projects/sample-static-site.tgz_ts-node@10.4.0
   '@rush-temp/sample-svelte': file:projects/sample-svelte.tgz_ts-node@10.4.0
@@ -84,11 +85,11 @@ dependencies:
   '@testing-library/svelte': 3.0.3_svelte@3.46.3
   '@tsconfig/svelte': 3.0.0
   '@types/jest': 27.4.0
-  '@types/node': 17.0.13
   '@typescript-eslint/eslint-plugin': 5.10.1_5bb2413551d07429e4087fb9ca3ae3ea
   '@typescript-eslint/parser': 5.10.1_eslint@8.8.0+typescript@4.5.5
   babel-jest: 27.4.6
   codemirror: 5.65.1
+  core-js: 3.20.3
   eslint: 8.8.0
   eslint-config-standard: 16.0.3_3fa03ca42f6626059a4867a76f65b153
   eslint-plugin-import: 2.25.4_eslint@8.8.0
@@ -99,6 +100,7 @@ dependencies:
   jest: 27.4.7_ts-node@10.4.0
   marked: 4.0.12
   pnpm: 6.28.0
+  regenerator-runtime: 0.13.9
   rollup: 2.66.1
   rollup-plugin-css-only: 3.1.0_rollup@2.66.1
   rollup-plugin-livereload: 2.0.5
@@ -110,7 +112,7 @@ dependencies:
   svelte-jester: 2.1.5_jest@27.4.7+svelte@3.46.3
   svelte-preprocess: 4.10.2_svelte@3.46.3+typescript@4.5.5
   ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-  ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+  ts-node: 10.4.0_typescript@4.5.5
   tslib: 2.3.1
   typescript: 4.5.5
 
@@ -2593,6 +2595,11 @@ packages:
     requiresBuild: true
     dev: false
 
+  /core-js/3.20.3:
+    resolution: {integrity: sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==}
+    requiresBuild: true
+    dev: false
+
   /create-require/1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: false
@@ -3757,7 +3764,7 @@ packages:
       micromatch: 4.0.4
       pretty-format: 27.4.6
       slash: 3.0.0
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -5412,6 +5419,35 @@ packages:
       yn: 3.1.1
     dev: false
 
+  /ts-node/10.4.0_typescript@4.5.5:
+    resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.7.0
+      '@tsconfig/node10': 1.0.8
+      '@tsconfig/node12': 1.0.9
+      '@tsconfig/node14': 1.0.1
+      '@tsconfig/node16': 1.0.2
+      acorn: 8.7.0
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.5.5
+      yn: 3.1.1
+    dev: false
+
   /tsconfig-paths/3.12.0:
     resolution: {integrity: sha512-e5adrnOYT6zqVnWqZu7i/BQ3BnhzvGbjEjejFXO20lKIKpwTaupkCPgEfv4GZK1IBciJUEhYs3J3p75FdaTFVg==}
     dependencies:
@@ -5682,7 +5718,7 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  file:projects/core.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/core.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-eR8WipGrToZH+mcjVNRuTKvnrUz4EO/utmQQuiDy2LJIZ1ER87gwBDaPhWS8+Yncy2/5qQvrIBlQmQlGYMH6JA==, tarball: file:projects/core.tgz}
     id: file:projects/core.tgz
     name: '@rush-temp/core'
@@ -5703,7 +5739,7 @@ packages:
       marked: 4.0.12
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5719,7 +5755,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/javascript-parser.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/javascript-parser.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-Eh+VA09wQR2hWR1Do6Eda7c4cKR7sQj3rFGn0eR441tSVbL5u7Po1Z0Xbj2JZ/cpXqqJqm8lD9UvcylB7/9DlA==, tarball: file:projects/javascript-parser.tgz}
     id: file:projects/javascript-parser.tgz
     name: '@rush-temp/javascript-parser'
@@ -5739,7 +5775,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5755,7 +5791,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/load-resource.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/load-resource.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-R4dsJ3GmCqLXrZ1J8t3ps02+Wv6DOXnZdzFmD1zwytXbrUq6xAmIJZQhIWcNR5IuIinii394SXFOs8yvF+H06g==, tarball: file:projects/load-resource.tgz}
     id: file:projects/load-resource.tgz
     name: '@rush-temp/load-resource'
@@ -5775,7 +5811,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5791,7 +5827,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/plugin-common.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/plugin-common.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-lqyc3R2OyozRK7o2Bi5NkTuI8qJTEtOog9oJ+tPc/DTef+ERfZl7RQIiD6lssf0/ytn5mqbWdzDaE/RLfk8bcA==, tarball: file:projects/plugin-common.tgz}
     id: file:projects/plugin-common.tgz
     name: '@rush-temp/plugin-common'
@@ -5811,7 +5847,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5827,7 +5863,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/plugin-javascript-x-assert.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/plugin-javascript-x-assert.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-PQ8szZ5E8L1XXo0Vf1Z7DyBrskcAna0Tql4OobmjkzXZUS8atXDOGlxCa0nu6Venrt+/CVCVWbSofCq1e84AXQ==, tarball: file:projects/plugin-javascript-x-assert.tgz}
     id: file:projects/plugin-javascript-x-assert.tgz
     name: '@rush-temp/plugin-javascript-x-assert'
@@ -5846,7 +5882,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5862,7 +5898,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/plugin-javascript-x-inline.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/plugin-javascript-x-inline.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-EUH7o8IVvKQIF2Q/eJS/Og9AvnXXQykvX/3hDTkukownhgPVXxVuV5QjkkBCCjstVZjQxWdkxaF3hMW9tg2Jbg==, tarball: file:projects/plugin-javascript-x-inline.tgz}
     id: file:projects/plugin-javascript-x-inline.tgz
     name: '@rush-temp/plugin-javascript-x-inline'
@@ -5881,7 +5917,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5897,7 +5933,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/plugin-javascript-x-view.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/plugin-javascript-x-view.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-KTHmVZlEoVOUtuo6C2pdZia7jZu0rB5w03+jlrVkKQ7qHFU5u8FCXH8mtkkqF0gdGGOgfSqlmiRt628ECw5atA==, tarball: file:projects/plugin-javascript-x-view.tgz}
     id: file:projects/plugin-javascript-x-view.tgz
     name: '@rush-temp/plugin-javascript-x-view'
@@ -5916,7 +5952,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -5967,7 +6003,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/plugin-kroki-x.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/plugin-kroki-x.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-RDD2uNEdwaA1/lf2KdAFPSuWLEJuje/IzMGC5VBuA/omKE7P99Ar3Q3TVRh6cLlYUqlV8cwOBbU+sku9mX/gFw==, tarball: file:projects/plugin-kroki-x.tgz}
     id: file:projects/plugin-kroki-x.tgz
     name: '@rush-temp/plugin-kroki-x'
@@ -5987,7 +6023,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -6003,7 +6039,7 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/runtime.tgz_5a28167401dbe5474053d6bb66a327b0:
+  file:projects/runtime.tgz_babel-jest@27.4.6:
     resolution: {integrity: sha512-UMjNpZjljddqqeFHa3qUULfBFZhQe0TBBdKMY7vll8UHMENdcJ8qWqjRgovlSiCJrhTqm5B9jqvU+KlOk1jC5A==, tarball: file:projects/runtime.tgz}
     id: file:projects/runtime.tgz
     name: '@rush-temp/runtime'
@@ -6023,7 +6059,7 @@ packages:
       jest: 27.4.7_ts-node@10.4.0
       pnpm: 6.28.0
       ts-jest: 27.1.3_ecaa6fbfd69a43fc0414056c9d5e434e
-      ts-node: 10.4.0_40146b36d18138e3202fbb722e5f65e4
+      ts-node: 10.4.0_typescript@4.5.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -6093,7 +6129,7 @@ packages:
     dev: false
 
   file:projects/sample-static-site.tgz_ts-node@10.4.0:
-    resolution: {integrity: sha512-1785uvCztEIjX6Ls8g7WqMLT3V6T9/TxINkaTTL3m0f7+3M1znUHz4RWnTparRIP1pu+JQ2VbAJ3xndpbCNMAg==, tarball: file:projects/sample-static-site.tgz}
+    resolution: {integrity: sha512-2PRzQeb1XHX3AqYl/4TmNxc1Qi0q5xod8hMcqbWDOdclnPRPk8WOrepD9UovdooI375BLS7EmfNBvBCzPIJOLg==, tarball: file:projects/sample-static-site.tgz}
     id: file:projects/sample-static-site.tgz
     name: '@rush-temp/sample-static-site'
     version: 0.0.0
@@ -6108,8 +6144,10 @@ packages:
       '@types/jest': 27.4.0
       '@types/node': 17.0.13
       babel-jest: 27.4.6
+      core-js: 3.20.3
       highlight.js: 11.4.0
       jest: 27.4.7_ts-node@10.4.0
+      regenerator-runtime: 0.13.9
       rollup: 2.66.1
       rollup-plugin-css-only: 3.1.0_rollup@2.66.1
       rollup-plugin-livereload: 2.0.5

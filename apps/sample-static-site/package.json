@@ -8,7 +8,7 @@
     "dev": "bin/build-notebooks-directory.mjs && rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "test": "echo Success",
+    "test": "jest --coverage --coverageReporters='text-summary' 2>&1",
     "test-watch": "pnpm test -- --watch"
   },
   "devDependencies": {
@@ -34,7 +34,9 @@
     "svelte-preprocess": "^4.10.2",
     "ts-jest": "^27.1.3",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "core-js": "~3.20.3",
+    "regenerator-runtime": "~0.13.9"
   },
   "dependencies": {
     "@exec-md/core": "^1.1.0",
