@@ -11,7 +11,7 @@ on:
 #     - cron: "0 0 12 * *"
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,13 @@ jobs:
 
       - name: Install node modules
         run: npm install -g pnpm
-        
+
+      - name: Install dependencies
+        run: rush install --no-link
+
+      - name: Link dependencies
+        run: rush link
+   
       - name: Check that there are no audit issues with any of the dependencies
         run: |
           cd ./common/temp
