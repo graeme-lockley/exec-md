@@ -24,7 +24,7 @@ jobs:
 
       - name: Link dependencies
         run: rush link
-   
+
       - name: Check that there are no audit issues with any of the dependencies
         run: |
           cd ./common/temp

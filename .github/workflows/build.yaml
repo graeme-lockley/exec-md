@@ -20,13 +20,20 @@ jobs:
 
       - name: Install rush
         run: npm install -g @microsoft/rush pnpm npm-check-updates
-        # run: node common/scripts/install-run-rush.js install
+
       - name: Check that dependency versions across projects are consistent
         run: rush check
-      - run: rush install --no-link
-      - run: rush link
+
+      - name: Install dependencies
+        run: rush install --no-link
+
+      - name: Link dependencies
+        run: rush link
+
       - name: Check that there are no audit issues with any of the dependencies
         run: |
           cd ./common/temp
           pnpm audit
-      - run: rush build --verbose
+
+      - name: Build and test exec-md
+        run: rush build --verbose
