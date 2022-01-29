@@ -1,8 +1,14 @@
-name: Check that exec-md has no audit issues
+name: Check Audit Issues
 
 on:
-  schedule:
-    - cron: "0 0 12 * *"
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# on:
+#   schedule:
+#     - cron: "0 0 12 * *"
 
 jobs:
   build:
@@ -17,8 +23,8 @@ jobs:
           node-version: 14.x
 
       - name: Install node modules
-        run: npm install -g pnpm npm-check-updates
-        # run: node common/scripts/install-run-rush.js install
+        run: npm install -g pnpm
+        
       - name: Check that there are no audit issues with any of the dependencies
         run: |
           cd ./common/temp
