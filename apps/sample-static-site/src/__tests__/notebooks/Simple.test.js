@@ -3,21 +3,21 @@ import "regenerator-runtime/runtime"
 import { createRuntime } from "@exec-md/runtime";
 import { standardSetup, defineModuleConfig, markedParse } from '@exec-md/core'
 import FS from 'fs'
-import jestConfig from "../../../jest.config";
 
 let runtime = undefined
 let module = undefined
-
-jest.setTimeout(10000)
 
 beforeAll(() => {
     globalThis.fetch = fetchFromFS
     standardSetup(undefined)
 })
 
-beforeEach(() => {
-    runtime = createRuntime();
-    module = importModule(runtime, './public/notebooks/simple.md')
+beforeEach(async () => {
+    runtime = createRuntime()
+
+    const imports = importModulePrime(runtime, './public/notebooks/simple.md')
+    module = imports[0]
+    await Promise.all(imports[1])
 })
 
 afterEach(() => {
@@ -54,27 +54,26 @@ test('athletes', async () => {
     expect(athletes.length).toEqual(11538)
 })
 
-// test('arbList', async () => {
-//     const arbList = await module.value('arbList')
+test('arbList', async () => {
+    const arbList = await module.value('arbList')
 
-//     expect(arbList).toEqual([2, 4, 6, 8, 10])
-// })
+    expect(arbList.length).toEqual(20)
+})
 
-const importModule = (runtime, filename) => {
+const importModulePrime = (runtime, filename) => {
     const module = runtime.module();
+    const modules = []
 
     defineModuleConfig(module, filename)
-    markedParse(FS.readFileSync(filename, 'utf-8'), module, false)
+    markedParse(FS.readFileSync(filename, 'utf-8'), module, false, modules)
 
-    return module
+    return [module, modules]
 }
 
 const fetchFromFS = (url) =>
     new Promise((resolve, reject) => {
         try {
             const fileName = url.startsWith('/') ? `./public${url}` : url
-
-            console.log('fetchFromFS: ', fileName)
 
             FS.readFile(fileName, 'utf8', (err, data) => {
                 if (err) {
