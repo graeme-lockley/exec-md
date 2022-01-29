@@ -23,7 +23,7 @@ jobs:
           node-version: 14.x
 
       - name: Install node modules
-        run: npm install -g pnpm
+        run: npm install -g @microsoft/rush pnpm
 
       - name: Install dependencies
         run: rush install --no-link
