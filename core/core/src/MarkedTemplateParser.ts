@@ -87,7 +87,7 @@ const inlineExpression = (plugins: Plugins) => ({
 
 export const translateMarkup = (text: string, module: IModule, url: string = ''): string => {
   defineModuleConfig(module, url)
-  return marked.parse(text, { nbv_module: module, nbv_render: true, nbv_modules: [] })
+  return markedParse(text, module, true)
 }
 
 export const translateURL = (url: string, module: IModule): Promise<string> =>
@@ -96,16 +96,19 @@ export const translateURL = (url: string, module: IModule): Promise<string> =>
     .then((text) => {
       defineModuleConfig(module, url)
 
-      return marked.parse(text, { nbv_module: module, nbv_render: true, nbv_modules: [] })
+      return markedParse(text, module, true)
     })
 
-const defineModuleConfig = (module: IModule, url: string | undefined): void => {
+export const defineModuleConfig = (module: IModule, url: string | undefined): void => {
   module.variable().define('__config', [], {
     url,
     plugins: globalPlugins,
     bindings: globalBindings
   })
 }
+
+export const markedParse = (text: string, module: IModule, render: boolean) =>
+  marked.parse(text, { nbv_module: module, nbv_render: render, nbv_modules: [] })
 
 const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefined =>
   findMap(plugins, (plugin: Plugin) => {
