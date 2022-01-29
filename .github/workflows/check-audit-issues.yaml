@@ -1,0 +1,25 @@
+name: Check that exec-md has no audit issues
+
+on:
+  schedule:
+    - cron: "0 0 0 * * ?"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install node modules
+        run: npm install -g pnpm npm-check-updates
+        # run: node common/scripts/install-run-rush.js install
+      - name: Check that there are no audit issues with any of the dependencies
+        run: |
+          cd ./common/temp
+          pnpm audit
