@@ -107,8 +107,8 @@ export const defineModuleConfig = (module: IModule, url: string | undefined): vo
   })
 }
 
-export const markedParse = (text: string, module: IModule, render: boolean) =>
-  marked.parse(text, { nbv_module: module, nbv_render: render, nbv_modules: [] })
+export const markedParse = (text: string, module: IModule, render: boolean, modules: Array<IModule> = []) =>
+  marked.parse(text, { nbv_module: module, nbv_render: render, nbv_modules: modules })
 
 const find = (plugins: Plugins, infostring: string): [Plugin, Options] | undefined =>
   findMap(plugins, (plugin: Plugin) => {
