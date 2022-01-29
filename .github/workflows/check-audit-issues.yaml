@@ -1,14 +1,8 @@
 name: Check Audit Issues
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-# on:
-#   schedule:
-#     - cron: "0 0 12 * *"
+  schedule:
+    - cron: "0 0 12 * *"
 
 jobs:
   check:
