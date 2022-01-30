@@ -7,6 +7,16 @@ import FS from 'fs'
 let runtime = undefined
 let module = undefined
 
+const importModule = (runtime, filename) => {
+    const module = runtime.module();
+    const modules = []
+
+    defineModuleConfig(module, filename)
+    markedParse(FS.readFileSync(filename, 'utf-8'), module, false, modules)
+
+    return [module, modules]
+}
+
 beforeAll(() => {
     globalThis.fetch = fetchFromFS
     standardSetup(undefined)
@@ -24,6 +34,35 @@ afterEach(() => {
     runtime.dispose()
     runtime = undefined
 })
+
+const testAssertionValues = async (module) => {
+    const names = [...module._scope.keys()].filter(n => n.startsWith('__assert_'))
+    const values = names.map(name => module.value(name))
+
+    const testResults = await Promise.all(values.map(value => {
+        return value.then(v => {
+            const result = v[1] === true
+                ? false
+                : {
+                    name: v[0],
+                    reason: v[1] === false ? 'Assertion failed' : 'Exception thrown'
+                }
+
+            if (result && v[1] !== false)
+                result.detail = v[1]
+
+            return result
+        }).catch(e => e)
+    }))
+
+    return testResults.filter(n => n)
+}
+
+const assertAssertions = async (module) => {
+    const assertions = await testAssertionValues(module)
+    
+    expect(assertions).toEqual([])
+}
 
 describe('Simple Notebook', () => {
     test('value', async () => {
@@ -66,17 +105,19 @@ describe('Simple Notebook', () => {
 
         expect(exponent).toEqual(undefined)
     })
+
+    test('Notebook assertions', async () => {
+        const assertions = await testAssertionValues(module)
+
+        expect(assertions.length).toEqual(2)
+
+        expect(assertions[0].name).toEqual('Given a negative argument then all hell breaks loose')
+        expect(assertions[0].reason).toEqual('Exception thrown')
+
+        expect(assertions[1].name).toEqual('Given a silly mistake this test will fail')
+        expect(assertions[1].reason).toEqual('Assertion failed')
+    })
 })
-
-const importModule = (runtime, filename) => {
-    const module = runtime.module();
-    const modules = []
-
-    defineModuleConfig(module, filename)
-    markedParse(FS.readFileSync(filename, 'utf-8'), module, false, modules)
-
-    return [module, modules]
-}
 
 const fetchFromFS = (url) =>
     new Promise((resolve, reject) => {

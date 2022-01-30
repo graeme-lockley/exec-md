@@ -22,10 +22,10 @@ export const javascriptXAssert: JavascriptXAssert = {
   },
 
   render: function (module: IModule, body: string, options: Options, render: boolean, modules: Array<Promise<IModule>>): string | Node {
-    if (render) {
-      const pr =
-        parse(body)
+    const pr =
+      parse(body)
 
+    if (render) {
       if (pr.type === 'assignment') {
         const id =
           `js-x-assert-${idCount++}`
@@ -40,7 +40,16 @@ export const javascriptXAssert: JavascriptXAssert = {
 
         return `<div id='${id}' class='nbv-js-x-assert'>Nothing to show</div>`
       } else { return '<div class=\'nbv-js-x-assert\'>Unable to assert against an import</div>' }
-    } else { return '' }
+    } else {
+      if (pr.type === 'assignment') {
+        const id = `__assert_${idCount++}`
+        const literalName = (options.get('js-x-assert') ?? id).replace(/'/g, "\\'")
+
+        defineVariable(module, undefined, id, pr.dependencies, `{ try { return ['${literalName}', ${pr.body}] } catch (e) { return ['${literalName}', e] } }`)
+      }
+
+      return ''
+    }
   }
 }
 
