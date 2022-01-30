@@ -1,80 +1,20 @@
-import "core-js/stable"
-import "regenerator-runtime/runtime"
-import { createRuntime } from "@exec-md/runtime";
-import { standardSetup, defineModuleConfig, markedParse } from '@exec-md/core'
-import FS from 'fs'
+import { setUp, tearDown, testAssertionValues, value } from '../Harness'
 
-let runtime = undefined
-let module = undefined
+beforeAll(() => setUp('./public/notebooks/simple.md'))
 
-const importModule = (runtime, filename) => {
-    const module = runtime.module();
-    const modules = []
-
-    defineModuleConfig(module, filename)
-    markedParse(FS.readFileSync(filename, 'utf-8'), module, false, modules)
-
-    return [module, modules]
-}
-
-beforeAll(() => {
-    globalThis.fetch = fetchFromFS
-    standardSetup(undefined)
-})
-
-beforeEach(async () => {
-    runtime = createRuntime()
-
-    const imports = importModule(runtime, './public/notebooks/simple.md')
-    module = imports[0]
-    await Promise.all(imports[1])
-})
-
-afterEach(() => {
-    runtime.dispose()
-    runtime = undefined
-})
-
-const testAssertionValues = async (module) => {
-    const names = [...module._scope.keys()].filter(n => n.startsWith('__assert_'))
-    const values = names.map(name => module.value(name))
-
-    const testResults = await Promise.all(values.map(value => {
-        return value.then(v => {
-            const result = v[1] === true
-                ? false
-                : {
-                    name: v[0],
-                    reason: v[1] === false ? 'Assertion failed' : 'Exception thrown'
-                }
-
-            if (result && v[1] !== false)
-                result.detail = v[1]
-
-            return result
-        }).catch(e => e)
-    }))
-
-    return testResults.filter(n => n)
-}
-
-const assertAssertions = async (module) => {
-    const assertions = await testAssertionValues(module)
-    
-    expect(assertions).toEqual([])
-}
+afterAll(() => tearDown())
 
 describe('Simple Notebook', () => {
     test('value', async () => {
-        const value = await module.value('value')
-        const valuesSquared = await module.value('valuesSquared')
+        const vs = await value('value')
+        const vsSquared = await value('valuesSquared')
 
-        expect(value).toEqual([2, 4, 6, 8, 10])
-        expect(valuesSquared).toEqual([4, 16, 36, 64, 100])
+        expect(vs).toEqual([2, 4, 6, 8, 10])
+        expect(vsSquared).toEqual([4, 16, 36, 64, 100])
     })
 
     test('athletes', async () => {
-        const athletes = await module.value('athletes')
+        const athletes = await value('athletes')
 
         expect(athletes[0]).toEqual({
             'bronze': 0,
@@ -95,19 +35,19 @@ describe('Simple Notebook', () => {
     })
 
     test('arbList', async () => {
-        const arbList = await module.value('arbList')
+        const arbList = await value('arbList')
 
         expect(arbList.length).toEqual(20)
     })
 
     test('exponent', async () => {
-        const exponent = await module.value('exponent')
+        const exponent = await value('exponent')
 
         expect(exponent).toEqual(undefined)
     })
 
     test('Notebook assertions', async () => {
-        const assertions = await testAssertionValues(module)
+        const assertions = await testAssertionValues()
 
         expect(assertions.length).toEqual(2)
 
@@ -117,22 +57,13 @@ describe('Simple Notebook', () => {
         expect(assertions[1].name).toEqual('Given a silly mistake this test will fail')
         expect(assertions[1].reason).toEqual('Assertion failed')
     })
+
+    // As this notebook contains illustrative errors the pipeline would fail.  However the following
+    // code would normally be used.
+    // Note:
+    //   assertAssertions would need to be imported from Harness.js
+
+    // test('Assert notebook assertions', async () => {
+    //     assertAssertions()
+    // })
 })
-
-const fetchFromFS = (url) =>
-    new Promise((resolve, reject) => {
-        try {
-            const fileName = url.startsWith('/') ? `./public${url}` : url
-
-            FS.readFile(fileName, 'utf8', (err, data) => {
-                if (err) {
-                    console.error(`Fetch Error: ${url}`, err)
-                    return reject(err)
-                } else {
-                    return resolve({ ok: true, text: () => data })
-                }
-            })
-        } catch (e) {
-            reject(e)
-        }
-    })
