@@ -1,6 +1,11 @@
 # Change Log - @exec-md/load-resource
 
-This log was last generated on Sun, 23 Jan 2022 14:17:38 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Mar 2022 04:21:25 GMT and should not be manually modified.
+
+## 1.1.1
+Thu, 24 Mar 2022 04:21:25 GMT
+
+_Version update only_
 
 ## 1.1.0
 Sun, 23 Jan 2022 14:17:38 GMT

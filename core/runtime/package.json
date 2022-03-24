@@ -1,6 +1,6 @@
 {
     "name": "@exec-md/runtime",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A typed wrapper over Observable's runtime system",
     "main": "dist/index.js",
     "types": "dist/index.d.js",
@@ -43,6 +43,6 @@
     },
     "dependencies": {
         "@observablehq/runtime": "^4.18.6",
-        "@exec-md/load-resource": "^1.1.0"
+        "@exec-md/load-resource": "^1.1.1"
     }
 }

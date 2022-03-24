@@ -2,6 +2,12 @@
   "name": "@exec-md/plugin-javascript-x-view",
   "entries": [
     {
+      "version": "1.1.1",
+      "tag": "@exec-md/plugin-javascript-x-view_v1.1.1",
+      "date": "Thu, 24 Mar 2022 04:21:25 GMT",
+      "comments": {}
+    },
+    {
       "version": "1.1.0",
       "tag": "@exec-md/plugin-javascript-x-view_v1.1.0",
       "date": "Sun, 23 Jan 2022 14:17:38 GMT",
