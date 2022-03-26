@@ -1,52 +1,16 @@
 #!/bin/bash
 
-(
-    cd core/load-resource
-    npm publish
-)
+for dir in core/*
+do
+    (
+        if ! cd "$dir"
+        then
+            echo "Error: Unable to change into $dir"
+            echo "Aborting"
+            exit 1
+        fi
 
-(
-    cd core/javascript-parser
-    npm publish
-)
-
-(
-    cd core/runtime
-    npm publish
-)
-
-(
-    cd core/plugin-common
-    npm publish
-)
-
-(
-    cd core/plugin-javascript-x
-    npm publish
-)
-
-(
-    cd core/plugin-javascript-x-assert
-    npm publish
-)
-
-(
-    cd core/plugin-javascript-x-inline
-    npm publish
-)
-
-(
-    cd core/plugin-javascript-x-view
-    npm publish
-)
-
-(
-    cd core/plugin-kroki-x
-    npm publish
-)
-
-(
-    cd core/core
-    npm publish
-)
-
+        echo "Publish: $dir"
+        echo npm publish
+    )
+done
